@@ -1,4 +1,4 @@
 package ro.mpp2024.repository;
 
-public class AngajatRepo {
+public class AngajatRepo{
 }
