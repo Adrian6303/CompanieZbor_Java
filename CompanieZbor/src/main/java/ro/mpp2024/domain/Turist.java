@@ -2,22 +2,14 @@ package ro.mpp2024.domain;
 
 import java.util.Objects;
 
-public class Turist {
-    private int id_turist;
+public class Turist extends Entity<Integer>{
     private String nume;
 
-    public Turist(int id_turist, String nume) {
-        this.id_turist = id_turist;
+    public Turist(String nume) {
         this.nume = nume;
     }
 
-    public int getId_turist() {
-        return id_turist;
-    }
-
-    public void setId_turist(int id_turist) {
-        this.id_turist = id_turist;
-    }
+    public void setID(Integer id){this.id = id;}
 
     public String getNume() {
         return nume;
@@ -31,12 +23,13 @@ public class Turist {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Turist turist = (Turist) o;
-        return id_turist == turist.id_turist && Objects.equals(nume, turist.nume);
+        return Objects.equals(nume, turist.nume);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_turist, nume);
+        return Objects.hash(super.hashCode(), nume);
     }
 }

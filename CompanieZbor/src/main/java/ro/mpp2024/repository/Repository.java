@@ -1,18 +1,20 @@
 package ro.mpp2024.repository;
 
 
-import java.util.Optional;
+import ro.mpp2024.domain.Entity;
 
-public interface Repository<ID, E> {
+import java.util.List;
 
-    Optional<E> findOne(ID id);
+public interface Repository<ID, E  extends Entity<ID>> {
 
-    Iterable<E> findAll();
+    E findOne(ID id);
 
-    Optional<E> save(E entity);
+    List<E> findAll();
 
-    Optional<E> delete(E entity);
+    void save(E entity);
 
-    Optional<E> update(E entity);
+    void delete(E entity);
+
+    void update(ID id,E entity);
 
 }

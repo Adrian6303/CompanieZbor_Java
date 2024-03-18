@@ -2,24 +2,16 @@ package ro.mpp2024.domain;
 
 import java.util.Objects;
 
-public class Angajat {
-    private int id_angajat;
+public class Angajat extends Entity<Integer>{
     private String user;
     private String password;
 
-    public Angajat(int id_angajat, String user, String password) {
-        this.id_angajat = id_angajat;
+    public Angajat(String user, String password) {
         this.user = user;
         this.password = password;
     }
 
-    public int getId_angajat() {
-        return id_angajat;
-    }
-
-    public void setId_angajat(int id_angajat) {
-        this.id_angajat = id_angajat;
-    }
+    public void setID(Integer id){this.id = id;}
 
     public String getUser() {
         return user;
@@ -41,12 +33,13 @@ public class Angajat {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Angajat angajat = (Angajat) o;
-        return id_angajat == angajat.id_angajat && Objects.equals(user, angajat.user) && Objects.equals(password, angajat.password);
+        return Objects.equals(user, angajat.user) && Objects.equals(password, angajat.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_angajat, user, password);
+        return Objects.hash(super.hashCode(), user, password);
     }
 }

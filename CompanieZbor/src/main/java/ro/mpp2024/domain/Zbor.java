@@ -1,30 +1,22 @@
 package ro.mpp2024.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
-public class Zbor {
-    private int id_zbor;
+public class Zbor extends Entity<Integer>{
     private String destinatia;
-    private Date data_plecarii;
+    private LocalDate dataPlecarii;
     private String aeroportul;
-    private int nr_locuri;
+    private int nrLocuri;
 
-    public Zbor(int id_zbor, String destinatia, Date data_plecarii, String aeroportul, int nr_locuri) {
-        this.id_zbor = id_zbor;
+    public Zbor(String destinatia, LocalDate dataPlecarii, String aeroportul, int nrLocuri) {
         this.destinatia = destinatia;
-        this.data_plecarii = data_plecarii;
+        this.dataPlecarii = dataPlecarii;
         this.aeroportul = aeroportul;
-        this.nr_locuri = nr_locuri;
+        this.nrLocuri = nrLocuri;
     }
 
-    public int getId_zbor() {
-        return id_zbor;
-    }
-
-    public void setId_zbor(int id_zbor) {
-        this.id_zbor = id_zbor;
-    }
+    public void setID(Integer id){this.id = id;}
 
     public String getDestinatia() {
         return destinatia;
@@ -34,12 +26,12 @@ public class Zbor {
         this.destinatia = destinatia;
     }
 
-    public Date getData_plecarii() {
-        return data_plecarii;
+    public LocalDate getDataPlecarii() {
+        return dataPlecarii;
     }
 
-    public void setData_plecarii(Date data_plecarii) {
-        this.data_plecarii = data_plecarii;
+    public void setDataPlecarii(LocalDate dataPlecarii) {
+        this.dataPlecarii = dataPlecarii;
     }
 
     public String getAeroportul() {
@@ -50,24 +42,25 @@ public class Zbor {
         this.aeroportul = aeroportul;
     }
 
-    public int getNr_locuri() {
-        return nr_locuri;
+    public int getNrLocuri() {
+        return nrLocuri;
     }
 
-    public void setNr_locuri(int nr_locuri) {
-        this.nr_locuri = nr_locuri;
+    public void setNrLocuri(int nrLocuri) {
+        this.nrLocuri = nrLocuri;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Zbor zbor = (Zbor) o;
-        return id_zbor == zbor.id_zbor && nr_locuri == zbor.nr_locuri && Objects.equals(destinatia, zbor.destinatia) && Objects.equals(data_plecarii, zbor.data_plecarii) && Objects.equals(aeroportul, zbor.aeroportul);
+        return nrLocuri == zbor.nrLocuri && Objects.equals(destinatia, zbor.destinatia) && Objects.equals(dataPlecarii, zbor.dataPlecarii) && Objects.equals(aeroportul, zbor.aeroportul);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_zbor, destinatia, data_plecarii, aeroportul, nr_locuri);
+        return Objects.hash(super.hashCode(), destinatia, dataPlecarii, aeroportul, nrLocuri);
     }
 }
