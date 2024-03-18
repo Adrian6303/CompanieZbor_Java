@@ -20,6 +20,14 @@ public class Turist extends Entity<Integer>{
     }
 
     @Override
+    public String toString() {
+        return "Turist{" +
+                "nume='" + nume + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

@@ -1,15 +1,16 @@
 package ro.mpp2024.domain;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Zbor extends Entity<Integer>{
     private String destinatia;
-    private LocalDate dataPlecarii;
+    private Date dataPlecarii;
     private String aeroportul;
     private int nrLocuri;
 
-    public Zbor(String destinatia, LocalDate dataPlecarii, String aeroportul, int nrLocuri) {
+    public Zbor(String destinatia, Date dataPlecarii, String aeroportul, int nrLocuri) {
         this.destinatia = destinatia;
         this.dataPlecarii = dataPlecarii;
         this.aeroportul = aeroportul;
@@ -26,11 +27,11 @@ public class Zbor extends Entity<Integer>{
         this.destinatia = destinatia;
     }
 
-    public LocalDate getDataPlecarii() {
+    public Date getDataPlecarii() {
         return dataPlecarii;
     }
 
-    public void setDataPlecarii(LocalDate dataPlecarii) {
+    public void setDataPlecarii(Date dataPlecarii) {
         this.dataPlecarii = dataPlecarii;
     }
 
@@ -48,6 +49,17 @@ public class Zbor extends Entity<Integer>{
 
     public void setNrLocuri(int nrLocuri) {
         this.nrLocuri = nrLocuri;
+    }
+
+    @Override
+    public String toString() {
+        return "Zbor{" +
+                "destinatia='" + destinatia + '\'' +
+                ", dataPlecarii=" + dataPlecarii +
+                ", aeroportul='" + aeroportul + '\'' +
+                ", nrLocuri=" + nrLocuri +
+                ", id=" + id +
+                '}';
     }
 
     @Override

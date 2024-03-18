@@ -30,6 +30,15 @@ public class Angajat extends Entity<Integer>{
     }
 
     @Override
+    public String toString() {
+        return "Angajat{" +
+                "user='" + user + '\'' +
+                ", password='" + password + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

@@ -69,4 +69,31 @@ public class Bilet extends Entity<Integer>{
     public void setNrLocuri(int nrLocuri) {
         this.nrLocuri = nrLocuri;
     }
+
+    @Override
+    public String toString() {
+        return "Bilet{" +
+                "angajat=" + angajat +
+                ", zbor=" + zbor +
+                ", client=" + client +
+                ", listaTuristi=" + listaTuristi +
+                ", adresaClient='" + adresaClient + '\'' +
+                ", nrLocuri=" + nrLocuri +
+                ", id=" + id +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Bilet bilet = (Bilet) o;
+        return nrLocuri == bilet.nrLocuri && Objects.equals(angajat, bilet.angajat) && Objects.equals(zbor, bilet.zbor) && Objects.equals(client, bilet.client) && Objects.equals(listaTuristi, bilet.listaTuristi) && Objects.equals(adresaClient, bilet.adresaClient);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), angajat, zbor, client, listaTuristi, adresaClient, nrLocuri);
+    }
 }
