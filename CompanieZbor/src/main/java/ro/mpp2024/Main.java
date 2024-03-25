@@ -1,5 +1,8 @@
 package ro.mpp2024;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import ro.mpp2024.domain.Angajat;
 import ro.mpp2024.domain.Bilet;
 import ro.mpp2024.domain.Turist;
@@ -13,8 +16,9 @@ import ro.mpp2024.service.Service;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
+import javafx.application.Application;
 
-public class Main {
+public class Main extends Application {
 
     public static void main(String[] args) {
 
@@ -25,31 +29,16 @@ public class Main {
             System.out.println("Cannot find bd.config "+e);
         }
 
-
-        AngajatRepo angajatRepo=new AngajatRepo(props);
-        TuristRepo turistRepo= new TuristRepo(props);
-        ZborRepo zborRepo = new ZborRepo(props);
-        BiletRepo biletRepo = new BiletRepo(props,angajatRepo,zborRepo,turistRepo);
-
-        Angajat ang = new Angajat("user3","23456");
-        //angajatRepo.save(ang);
-        //angajatRepo.update(3,ang);
-
-
-        for(Angajat a:angajatRepo.findAll())
-            System.out.println(a);
-
-        for(Turist t:turistRepo.findAll())
-            System.out.println(t);
-
-        for(Zbor z:zborRepo.findAll())
-            System.out.println(z);
-
-        for(Bilet b:biletRepo.findAll())
-            System.out.println(b);
+        launch();
 
     }
 
+    public void start(Stage stage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("main_view.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setScene(scene);
+        stage.show();
+    }
 
 
 }

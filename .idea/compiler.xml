@@ -2,9 +2,12 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="CompanieZbor" target="17" />
-      <module name="CompanieZbor.main" target="17" />
-      <module name="CompanieZbor.test" target="17" />
+      <module name="CompanieZborUI" target="17" />
+      <module name="CompanieZborUI.main" target="17" />
+      <module name="CompanieZborUI.test" target="17" />
+      <module name="CompanieZboruri" target="17" />
+      <module name="CompanieZboruri.main" target="17" />
+      <module name="CompanieZboruri.test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

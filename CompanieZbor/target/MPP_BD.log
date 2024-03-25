@@ -106,3 +106,111 @@
 21 Mar 2024 11:08:08,586 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
 21 Mar 2024 11:08:08,587 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@73eb439a)
 21 Mar 2024 11:08:08,593 TRACE ro.mpp2024.repository.BiletRepo 74 findAll - Exit with([Bilet{angajat=null, zbor=null, client=null, listaTuristi=[], adresaClient='Cluj', nrLocuri=2, id=1}, Bilet{angajat=null, zbor=null, client=null, listaTuristi=[], adresaClient='Bucuresti', nrLocuri=1, id=2}])
+24 Mar 2024 14:31:05,190 INFO  ro.mpp2024.repository.AngajatRepo 24 <init> - Initializing AngajatRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+24 Mar 2024 14:31:05,221 INFO  ro.mpp2024.repository.TuristRepo 25 <init> - Initializing TuristRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+24 Mar 2024 14:31:05,244 INFO  ro.mpp2024.repository.ZborRepo 23 <init> - Initializing ZborRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+24 Mar 2024 14:31:05,272 INFO  ro.mpp2024.repository.BiletRepo 33 <init> - Initializing BiletRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+24 Mar 2024 14:31:05,274 TRACE ro.mpp2024.repository.AngajatRepo 34 findAll - Enter
+24 Mar 2024 14:31:05,275 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+24 Mar 2024 14:31:05,275 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+24 Mar 2024 14:31:05,276 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+24 Mar 2024 14:31:05,277 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+24 Mar 2024 14:31:05,277 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+24 Mar 2024 14:31:05,595 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@6e9a5ed8)
+24 Mar 2024 14:31:05,601 TRACE ro.mpp2024.repository.AngajatRepo 52 findAll - Exit with([Angajat{user='User1', password='1234', id=1}, Angajat{user='User2', password='9876', id=2}, Angajat{user='user3', password='23456', id=3}])
+24 Mar 2024 14:31:05,604 TRACE ro.mpp2024.repository.TuristRepo 36 findAll - Enter
+24 Mar 2024 14:31:05,604 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+24 Mar 2024 14:31:05,605 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+24 Mar 2024 14:31:05,605 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+24 Mar 2024 14:31:05,605 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+24 Mar 2024 14:31:05,606 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+24 Mar 2024 14:31:05,606 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@8462f31)
+24 Mar 2024 14:31:05,608 TRACE ro.mpp2024.repository.TuristRepo 53 findAll - Exit with([Turist{nume='Turist1', id=1}, Turist{nume='Turist2', id=2}])
+24 Mar 2024 14:31:05,609 TRACE ro.mpp2024.repository.ZborRepo 34 findAll - Enter
+24 Mar 2024 14:31:05,609 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+24 Mar 2024 14:31:05,609 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+24 Mar 2024 14:31:05,610 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+24 Mar 2024 14:31:05,610 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+24 Mar 2024 14:31:05,610 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+24 Mar 2024 14:31:05,613 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5ddeb7cb)
+24 Mar 2024 14:31:05,625 TRACE ro.mpp2024.repository.ZborRepo 54 findAll - Exit with([Zbor{destinatia='Milano', dataPlecarii=2024-03-30, aeroportul='Bergamo', nrLocuri=100, id=1}, Zbor{destinatia='Paris', dataPlecarii=2024-03-31, aeroportul='Beaovois', nrLocuri=150, id=2}])
+24 Mar 2024 14:31:05,625 TRACE ro.mpp2024.repository.BiletRepo 48 findAll - Enter
+24 Mar 2024 14:31:05,625 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+24 Mar 2024 14:31:05,625 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+24 Mar 2024 14:31:05,626 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+24 Mar 2024 14:31:05,626 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+24 Mar 2024 14:31:05,627 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+24 Mar 2024 14:31:05,629 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@73eb439a)
+24 Mar 2024 14:31:05,645 TRACE ro.mpp2024.repository.BiletRepo 74 findAll - Exit with([Bilet{angajat=null, zbor=null, client=null, listaTuristi=[], adresaClient='Cluj', nrLocuri=2, id=1}, Bilet{angajat=null, zbor=null, client=null, listaTuristi=[], adresaClient='Bucuresti', nrLocuri=1, id=2}])
+24 Mar 2024 14:39:45,162 INFO  ro.mpp2024.repository.AngajatRepo 24 <init> - Initializing AngajatRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+24 Mar 2024 14:39:45,168 INFO  ro.mpp2024.repository.TuristRepo 25 <init> - Initializing TuristRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+24 Mar 2024 14:39:45,170 INFO  ro.mpp2024.repository.ZborRepo 23 <init> - Initializing ZborRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+24 Mar 2024 14:39:45,171 INFO  ro.mpp2024.repository.BiletRepo 33 <init> - Initializing BiletRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+24 Mar 2024 14:39:45,173 TRACE ro.mpp2024.repository.AngajatRepo 34 findAll - Enter
+24 Mar 2024 14:39:45,173 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+24 Mar 2024 14:39:45,174 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+24 Mar 2024 14:39:45,174 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+24 Mar 2024 14:39:45,175 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+24 Mar 2024 14:39:45,175 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+24 Mar 2024 14:39:45,410 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@6e9a5ed8)
+24 Mar 2024 14:39:45,415 TRACE ro.mpp2024.repository.AngajatRepo 52 findAll - Exit with([Angajat{user='User1', password='1234', id=1}, Angajat{user='User2', password='9876', id=2}, Angajat{user='user3', password='23456', id=3}])
+24 Mar 2024 14:39:45,417 TRACE ro.mpp2024.repository.TuristRepo 36 findAll - Enter
+24 Mar 2024 14:39:45,417 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+24 Mar 2024 14:39:45,418 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+24 Mar 2024 14:39:45,418 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+24 Mar 2024 14:39:45,418 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+24 Mar 2024 14:39:45,419 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+24 Mar 2024 14:39:45,421 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@8462f31)
+24 Mar 2024 14:39:45,422 TRACE ro.mpp2024.repository.TuristRepo 53 findAll - Exit with([Turist{nume='Turist1', id=1}, Turist{nume='Turist2', id=2}])
+24 Mar 2024 14:39:45,425 TRACE ro.mpp2024.repository.ZborRepo 34 findAll - Enter
+24 Mar 2024 14:39:45,425 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+24 Mar 2024 14:39:45,425 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+24 Mar 2024 14:39:45,426 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+24 Mar 2024 14:39:45,426 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+24 Mar 2024 14:39:45,427 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+24 Mar 2024 14:39:45,428 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5ddeb7cb)
+24 Mar 2024 14:39:45,438 TRACE ro.mpp2024.repository.ZborRepo 54 findAll - Exit with([Zbor{destinatia='Milano', dataPlecarii=2024-03-30, aeroportul='Bergamo', nrLocuri=100, id=1}, Zbor{destinatia='Paris', dataPlecarii=2024-03-31, aeroportul='Beaovois', nrLocuri=150, id=2}])
+24 Mar 2024 14:39:45,439 TRACE ro.mpp2024.repository.BiletRepo 48 findAll - Enter
+24 Mar 2024 14:39:45,439 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+24 Mar 2024 14:39:45,439 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+24 Mar 2024 14:39:45,440 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+24 Mar 2024 14:39:45,441 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+24 Mar 2024 14:39:45,441 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+24 Mar 2024 14:39:45,442 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@73eb439a)
+24 Mar 2024 14:39:45,449 TRACE ro.mpp2024.repository.BiletRepo 74 findAll - Exit with([Bilet{angajat=null, zbor=null, client=null, listaTuristi=[], adresaClient='Cluj', nrLocuri=2, id=1}, Bilet{angajat=null, zbor=null, client=null, listaTuristi=[], adresaClient='Bucuresti', nrLocuri=1, id=2}])
+25 Mar 2024 12:51:03,673 INFO  ro.mpp2024.repository.AngajatRepo 24 <init> - Initializing AngajatRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+25 Mar 2024 12:51:03,677 INFO  ro.mpp2024.repository.TuristRepo 25 <init> - Initializing TuristRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+25 Mar 2024 12:51:03,678 INFO  ro.mpp2024.repository.ZborRepo 23 <init> - Initializing ZborRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+25 Mar 2024 12:51:03,678 INFO  ro.mpp2024.repository.BiletRepo 33 <init> - Initializing BiletRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+25 Mar 2024 12:51:03,679 TRACE ro.mpp2024.repository.AngajatRepo 34 findAll - Enter
+25 Mar 2024 12:51:03,679 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+25 Mar 2024 12:51:03,679 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+25 Mar 2024 12:51:03,680 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+25 Mar 2024 12:51:03,680 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+25 Mar 2024 12:51:03,680 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+25 Mar 2024 12:51:03,817 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@6e9a5ed8)
+25 Mar 2024 12:51:03,819 TRACE ro.mpp2024.repository.AngajatRepo 52 findAll - Exit with([Angajat{user='User1', password='1234', id=1}, Angajat{user='User2', password='9876', id=2}, Angajat{user='user3', password='23456', id=3}])
+25 Mar 2024 12:51:03,819 TRACE ro.mpp2024.repository.TuristRepo 36 findAll - Enter
+25 Mar 2024 12:51:03,820 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+25 Mar 2024 12:51:03,820 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+25 Mar 2024 12:51:03,820 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+25 Mar 2024 12:51:03,820 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+25 Mar 2024 12:51:03,820 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+25 Mar 2024 12:51:03,821 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@8462f31)
+25 Mar 2024 12:51:03,822 TRACE ro.mpp2024.repository.TuristRepo 53 findAll - Exit with([Turist{nume='Turist1', id=1}, Turist{nume='Turist2', id=2}])
+25 Mar 2024 12:51:03,822 TRACE ro.mpp2024.repository.ZborRepo 34 findAll - Enter
+25 Mar 2024 12:51:03,822 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+25 Mar 2024 12:51:03,822 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+25 Mar 2024 12:51:03,822 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+25 Mar 2024 12:51:03,822 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+25 Mar 2024 12:51:03,823 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+25 Mar 2024 12:51:03,823 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5ddeb7cb)
+25 Mar 2024 12:51:03,832 TRACE ro.mpp2024.repository.ZborRepo 54 findAll - Exit with([Zbor{destinatia='Milano', dataPlecarii=2024-03-30, aeroportul='Bergamo', nrLocuri=100, id=1}, Zbor{destinatia='Paris', dataPlecarii=2024-03-31, aeroportul='Beaovois', nrLocuri=150, id=2}])
+25 Mar 2024 12:51:03,832 TRACE ro.mpp2024.repository.BiletRepo 48 findAll - Enter
+25 Mar 2024 12:51:03,832 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+25 Mar 2024 12:51:03,832 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+25 Mar 2024 12:51:03,833 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+25 Mar 2024 12:51:03,833 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+25 Mar 2024 12:51:03,833 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+25 Mar 2024 12:51:03,833 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@73eb439a)
+25 Mar 2024 12:51:03,839 TRACE ro.mpp2024.repository.BiletRepo 74 findAll - Exit with([Bilet{angajat=null, zbor=null, client=null, listaTuristi=[], adresaClient='Cluj', nrLocuri=2, id=1}, Bilet{angajat=null, zbor=null, client=null, listaTuristi=[], adresaClient='Bucuresti', nrLocuri=1, id=2}])

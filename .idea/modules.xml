@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CompanieZbor.iml" filepath="$PROJECT_DIR$/CompanieZbor.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CompanieZbor.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CompanieZbor.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CompanieZbor.test.iml" filepath="$PROJECT_DIR$/.idea/modules/CompanieZbor.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/mpp-proiect-java-Adrian6303.iml" filepath="$PROJECT_DIR$/.idea/mpp-proiect-java-Adrian6303.iml" />
     </modules>
   </component>
