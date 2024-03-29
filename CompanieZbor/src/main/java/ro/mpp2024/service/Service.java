@@ -84,6 +84,16 @@ public class Service implements Observable{
         return zborRepo.findOne(id);
     }
 
+    public List<String> addDestinations(){
+        List<Zbor> zboruri = zborRepo.findAll();
+        List<String> destinatii = new ArrayList<>();
+        for(Zbor zbor:zboruri){
+            if(!destinatii.contains(zbor.getDestinatia())){
+                destinatii.add(zbor.getDestinatia());
+            }
+        }
+        return destinatii;
+    }
     @Override
     public void addObserver(Observer o) {
         observers.add(o);
@@ -96,5 +106,7 @@ public class Service implements Observable{
     public void notifyObservers() {
         observers.forEach(Observer::update);
     }
+
+
 
 }
