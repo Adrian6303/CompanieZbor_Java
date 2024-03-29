@@ -53,13 +53,7 @@ public class Zbor extends Entity<Integer>{
 
     @Override
     public String toString() {
-        return "Zbor{" +
-                "destinatia='" + destinatia + '\'' +
-                ", dataPlecarii=" + dataPlecarii +
-                ", aeroportul='" + aeroportul + '\'' +
-                ", nrLocuri=" + nrLocuri +
-                ", id=" + id +
-                '}';
+        return "ZborId: " + id + "     Aeroportul: " + aeroportul + "     NumarLocuri: " + nrLocuri;
     }
 
     @Override

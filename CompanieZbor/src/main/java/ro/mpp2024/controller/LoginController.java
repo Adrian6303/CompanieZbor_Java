@@ -59,6 +59,12 @@ public class LoginController implements Observer {
         searchController.setService(service);
         stage.setScene(scene);
         stage.show();
+        this.closeWindow();
 
+    }
+
+    private void closeWindow() {
+        Stage stage = (Stage) loginButton.getScene().getWindow();
+        stage.close();
     }
 }

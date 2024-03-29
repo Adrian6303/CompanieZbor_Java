@@ -1,14 +1,18 @@
 package ro.mpp2024.controller;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import ro.mpp2024.Main;
 import ro.mpp2024.domain.Angajat;
 import ro.mpp2024.domain.Zbor;
 import ro.mpp2024.service.Service;
 import ro.mpp2024.utils.Observer;
+
+import java.io.IOException;
+import java.sql.Date;
 
 import java.util.List;
 
@@ -45,8 +49,49 @@ public class SearchController implements Observer{
     }
 
     public void SearchButtonClick(ActionEvent actionEvent) {
+        String destinatie = destinatiiComboBox.getValue();
+        List<Zbor> zboruri = service.findZboruriByDestinatieAndDate(destinatie, Date.valueOf(dataPlecariiDatePicker.getValue()));
+        zboruriListView.getItems().setAll(zboruri);
     }
 
     public void ConfirmButtonClick(ActionEvent actionEvent) {
+        Zbor zbor = zboruriListView.getSelectionModel().getSelectedItem();
+        if(zbor != null){
+            try {
+                openWindow();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No flight selected");
+            alert.setHeaderText("No flight selected");
+            alert.setContentText("Please select a flight");
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
+    }
+
+    private void openWindow() throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("buy_view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Buy flight tickets to " + zboruriListView.getSelectionModel().getSelectedItem().getDestinatia());
+        BuyController buyController = fxmlLoader.getController();
+        buyController.setAngajat(angajat);
+        buyController.setZbor(zboruriListView.getSelectionModel().getSelectedItem());
+        buyController.setService(service);
+        stage.setScene(scene);
+        stage.show();
+        this.closeWindow();
+
+    }
+    private void closeWindow() {
+        Stage stage = (Stage) confirmButton.getScene().getWindow();
+        stage.close();
     }
 }

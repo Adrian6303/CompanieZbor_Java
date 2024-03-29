@@ -8,6 +8,7 @@ import ro.mpp2024.utils.Observable;
 import ro.mpp2024.utils.Observer;
 
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 public class Service implements Observable{
@@ -93,6 +94,18 @@ public class Service implements Observable{
             }
         }
         return destinatii;
+    }
+
+    public List<Zbor> findZboruriByDestinatieAndDate(String destinatie, Date dataplecarii){
+        List<Zbor> zboruri = zborRepo.findAll();
+        List<Zbor> zboruriFiltrate = new ArrayList<>();
+        for(Zbor zbor:zboruri){
+            if(zbor.getDestinatia().equals(destinatie) && zbor.getDataPlecarii().toString().equals(dataplecarii.toString()) && zbor.getNrLocuri()>0){
+                zboruriFiltrate.add(zbor);
+            }
+        }
+        return zboruriFiltrate;
+
     }
     @Override
     public void addObserver(Observer o) {
