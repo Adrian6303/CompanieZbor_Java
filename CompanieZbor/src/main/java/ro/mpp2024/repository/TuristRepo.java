@@ -28,6 +28,24 @@ public class TuristRepo implements Repository<Integer, Turist>{
 
     @Override
     public Turist findOne(Integer aLong) {
+        logger.traceEntry("finding task with id {} ", aLong);
+        Connection connection = dbUtils.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement("select * from turist where id=?")) {
+            preparedStatement.setInt(1, aLong);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String nume = resultSet.getString("nume");
+                    Turist turist = new Turist(nume);
+                    turist.setId(aLong);
+                    logger.traceExit(turist);
+                    return turist;
+                }
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            System.err.println("Error DB " + e);
+        }
+        logger.traceExit();
         return null;
     }
 
@@ -73,6 +91,17 @@ public class TuristRepo implements Repository<Integer, Turist>{
 
     @Override
     public void delete(Turist entity) {
+        logger.traceEntry("deleting task {}", entity);
+        Connection connection = dbUtils.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement("delete from turist where id=?")) {
+            preparedStatement.setInt(1, entity.getId());
+            int result = preparedStatement.executeUpdate();
+            logger.trace("deleted {} instances", result);
+        } catch (SQLException ex) {
+            logger.error(ex);
+            System.err.println("Error DB" + ex);
+        }
+        logger.traceExit();
 
     }
 

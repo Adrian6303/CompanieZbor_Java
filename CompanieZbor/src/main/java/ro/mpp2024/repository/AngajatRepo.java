@@ -26,6 +26,47 @@ public class AngajatRepo implements Repository<Integer,Angajat>{
     }
     @Override
     public Angajat findOne(Integer id) {
+        logger.traceEntry("finding task with id {} ", id);
+        Connection connection = dbUtils.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement("select * from angajat where id=?")) {
+            preparedStatement.setInt(1, id);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String user = resultSet.getString("user");
+                    String password = resultSet.getString("password");
+                    Angajat angajat = new Angajat(user, password);
+                    angajat.setId(id);
+                    logger.traceExit(angajat);
+                    return angajat;
+                }
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            System.err.println("Error DB " + e);
+        }
+        logger.traceExit();
+        return null;
+    }
+    public Angajat findAngajatByUserAndPass(String user, String password){
+        logger.traceEntry();
+        Connection connection = dbUtils.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement("select * from angajat where user=? and password=?")) {
+            preparedStatement.setString(1, user);
+            preparedStatement.setString(2, password);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int id = resultSet.getInt("id");
+                    Angajat angajat = new Angajat(user, password);
+                    angajat.setId(id);
+                    logger.traceExit(angajat);
+                    return angajat;
+                }
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            System.err.println("Error DB " + e);
+        }
+        logger.traceExit();
         return null;
     }
 
@@ -71,6 +112,17 @@ public class AngajatRepo implements Repository<Integer,Angajat>{
 
     @Override
     public void delete(Angajat entity) {
+        logger.traceEntry("deleting task {}", entity);
+        Connection connection = dbUtils.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement("delete from angajat where id=?")) {
+            preparedStatement.setInt(1, entity.getId());
+            int result = preparedStatement.executeUpdate();
+            logger.trace("deleted {} instances", result);
+        } catch (SQLException ex) {
+            logger.error(ex);
+            System.err.println("Error DB" + ex);
+        }
+        logger.traceExit();
 
     }
 

@@ -26,6 +26,27 @@ public class ZborRepo implements Repository<Integer, Zbor>{
 
     @Override
     public Zbor findOne(Integer aLong) {
+        logger.traceEntry("finding task with id {} ", aLong);
+        Connection connection = dbUtils.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement("select * from zbor where id=?")) {
+            preparedStatement.setInt(1, aLong);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String destinatia = resultSet.getString("destinatia");
+                    Date dataPlecarii = resultSet.getDate("dataPlecarii");
+                    String aeroportul = resultSet.getString("aeroportul");
+                    int nrLocuri = resultSet.getInt("nrLocuri");
+                    Zbor zbor = new Zbor(destinatia,dataPlecarii,aeroportul,nrLocuri);
+                    zbor.setId(aLong);
+                    logger.traceExit(zbor);
+                    return zbor;
+                }
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            System.err.println("Error DB " + e);
+        }
+        logger.traceExit();
         return null;
     }
 
@@ -75,6 +96,17 @@ public class ZborRepo implements Repository<Integer, Zbor>{
 
     @Override
     public void delete(Zbor entity) {
+        logger.traceEntry("deleting task {}", entity);
+        Connection connection = dbUtils.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement("delete from zbor where id=?")) {
+            preparedStatement.setInt(1, entity.getId());
+            int result = preparedStatement.executeUpdate();
+            logger.trace("deleted {} instances", result);
+        } catch (SQLException ex) {
+            logger.error(ex);
+            System.err.println("Error DB" + ex);
+        }
+        logger.traceExit();
 
     }
 
