@@ -38,7 +38,13 @@ public class Service implements Observable{
     }
 
     public List<Zbor> findAllZboruri(){
-        return zborRepo.findAll();
+        List<Zbor> zboruri = zborRepo.findAll();
+        for(Zbor zbor:zboruri){
+            if(zbor.getNrLocuri() == 0){
+                zborRepo.delete(zbor);
+            }
+        }
+        return zboruri;
     }
 
     public void addAngajat(Angajat angajat){

@@ -2771,3 +2771,79 @@
 31 Mar 2024 12:45:07,930 INFO  ro.mpp2024.repository.ZborRepo 23 <init> - Initializing ZborRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
 31 Mar 2024 12:45:07,931 INFO  ro.mpp2024.repository.TuristRepo 25 <init> - Initializing TuristRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
 31 Mar 2024 12:45:07,932 INFO  ro.mpp2024.repository.BiletRepo 33 <init> - Initializing BiletRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:46:16,637 INFO  ro.mpp2024.repository.AngajatRepo 24 <init> - Initializing AngajatRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:46:16,667 INFO  ro.mpp2024.repository.ZborRepo 23 <init> - Initializing ZborRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:46:16,682 INFO  ro.mpp2024.repository.TuristRepo 25 <init> - Initializing TuristRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:46:16,696 INFO  ro.mpp2024.repository.BiletRepo 33 <init> - Initializing BiletRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:47:28,464 TRACE ro.mpp2024.repository.AngajatRepo 51 findAngajatByUserAndPass - Enter
+31 Mar 2024 20:47:28,465 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+31 Mar 2024 20:47:28,465 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+31 Mar 2024 20:47:28,465 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+31 Mar 2024 20:47:28,465 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+31 Mar 2024 20:47:28,465 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+31 Mar 2024 20:47:28,660 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@2aea954f)
+31 Mar 2024 20:47:28,663 TRACE ro.mpp2024.repository.AngajatRepo 61 findAngajatByUserAndPass - Exit with(Angajat{user='User1', password='1234', id=1})
+31 Mar 2024 20:47:28,703 TRACE ro.mpp2024.repository.ZborRepo 55 findAll - Enter
+31 Mar 2024 20:47:28,704 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+31 Mar 2024 20:47:28,704 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+31 Mar 2024 20:47:28,704 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+31 Mar 2024 20:47:28,704 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+31 Mar 2024 20:47:28,704 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+31 Mar 2024 20:47:28,705 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7b2126e7)
+31 Mar 2024 20:47:28,708 TRACE ro.mpp2024.repository.ZborRepo 75 findAll - Exit with([ZborId: 1     Aeroportul: Bergamo     NumarLocuri: 87, ZborId: 2     Aeroportul: Beauvois     NumarLocuri: 127, ZborId: 3     Aeroportul: Male     NumarLocuri: 42, ZborId: 4     Aeroportul: Lutton     NumarLocuri: 130, ZborId: 5     Aeroportul: Otopeni     NumarLocuri: 160, ZborId: 6     Aeroportul: Avram Iancu     NumarLocuri: 130, ZborId: 7     Aeroportul: Ghimbav     NumarLocuri: 100])
+31 Mar 2024 20:47:28,709 TRACE ro.mpp2024.repository.ZborRepo 55 findAll - Enter
+31 Mar 2024 20:47:28,709 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+31 Mar 2024 20:47:28,709 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7b2126e7)
+31 Mar 2024 20:47:28,709 TRACE ro.mpp2024.repository.ZborRepo 75 findAll - Exit with([ZborId: 1     Aeroportul: Bergamo     NumarLocuri: 87, ZborId: 2     Aeroportul: Beauvois     NumarLocuri: 127, ZborId: 3     Aeroportul: Male     NumarLocuri: 42, ZborId: 4     Aeroportul: Lutton     NumarLocuri: 130, ZborId: 5     Aeroportul: Otopeni     NumarLocuri: 160, ZborId: 6     Aeroportul: Avram Iancu     NumarLocuri: 130, ZborId: 7     Aeroportul: Ghimbav     NumarLocuri: 100])
+31 Mar 2024 20:47:40,188 TRACE ro.mpp2024.repository.AngajatRepo 51 findAngajatByUserAndPass - Enter
+31 Mar 2024 20:47:40,188 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+31 Mar 2024 20:47:40,188 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@2aea954f)
+31 Mar 2024 20:47:40,189 TRACE ro.mpp2024.repository.AngajatRepo 61 findAngajatByUserAndPass - Exit with(Angajat{user='User2', password='9876', id=2})
+31 Mar 2024 20:47:40,194 TRACE ro.mpp2024.repository.ZborRepo 55 findAll - Enter
+31 Mar 2024 20:47:40,194 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+31 Mar 2024 20:47:40,195 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7b2126e7)
+31 Mar 2024 20:47:40,195 TRACE ro.mpp2024.repository.ZborRepo 75 findAll - Exit with([ZborId: 1     Aeroportul: Bergamo     NumarLocuri: 87, ZborId: 2     Aeroportul: Beauvois     NumarLocuri: 127, ZborId: 3     Aeroportul: Male     NumarLocuri: 42, ZborId: 4     Aeroportul: Lutton     NumarLocuri: 130, ZborId: 5     Aeroportul: Otopeni     NumarLocuri: 160, ZborId: 6     Aeroportul: Avram Iancu     NumarLocuri: 130, ZborId: 7     Aeroportul: Ghimbav     NumarLocuri: 100])
+31 Mar 2024 20:47:40,195 TRACE ro.mpp2024.repository.ZborRepo 55 findAll - Enter
+31 Mar 2024 20:47:40,195 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+31 Mar 2024 20:47:40,196 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7b2126e7)
+31 Mar 2024 20:47:40,196 TRACE ro.mpp2024.repository.ZborRepo 75 findAll - Exit with([ZborId: 1     Aeroportul: Bergamo     NumarLocuri: 87, ZborId: 2     Aeroportul: Beauvois     NumarLocuri: 127, ZborId: 3     Aeroportul: Male     NumarLocuri: 42, ZborId: 4     Aeroportul: Lutton     NumarLocuri: 130, ZborId: 5     Aeroportul: Otopeni     NumarLocuri: 160, ZborId: 6     Aeroportul: Avram Iancu     NumarLocuri: 130, ZborId: 7     Aeroportul: Ghimbav     NumarLocuri: 100])
+31 Mar 2024 20:47:59,508 TRACE ro.mpp2024.repository.AngajatRepo 51 findAngajatByUserAndPass - Enter
+31 Mar 2024 20:47:59,509 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+31 Mar 2024 20:47:59,509 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@2aea954f)
+31 Mar 2024 20:47:59,510 TRACE ro.mpp2024.repository.AngajatRepo 61 findAngajatByUserAndPass - Exit with(Angajat{user='0', password='0', id=5})
+31 Mar 2024 20:47:59,519 TRACE ro.mpp2024.repository.ZborRepo 55 findAll - Enter
+31 Mar 2024 20:47:59,519 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+31 Mar 2024 20:47:59,519 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7b2126e7)
+31 Mar 2024 20:47:59,521 TRACE ro.mpp2024.repository.ZborRepo 75 findAll - Exit with([ZborId: 1     Aeroportul: Bergamo     NumarLocuri: 87, ZborId: 2     Aeroportul: Beauvois     NumarLocuri: 127, ZborId: 3     Aeroportul: Male     NumarLocuri: 42, ZborId: 4     Aeroportul: Lutton     NumarLocuri: 130, ZborId: 5     Aeroportul: Otopeni     NumarLocuri: 160, ZborId: 6     Aeroportul: Avram Iancu     NumarLocuri: 130, ZborId: 7     Aeroportul: Ghimbav     NumarLocuri: 100])
+31 Mar 2024 20:47:59,521 TRACE ro.mpp2024.repository.ZborRepo 55 findAll - Enter
+31 Mar 2024 20:47:59,521 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+31 Mar 2024 20:47:59,521 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7b2126e7)
+31 Mar 2024 20:47:59,522 TRACE ro.mpp2024.repository.ZborRepo 75 findAll - Exit with([ZborId: 1     Aeroportul: Bergamo     NumarLocuri: 87, ZborId: 2     Aeroportul: Beauvois     NumarLocuri: 127, ZborId: 3     Aeroportul: Male     NumarLocuri: 42, ZborId: 4     Aeroportul: Lutton     NumarLocuri: 130, ZborId: 5     Aeroportul: Otopeni     NumarLocuri: 160, ZborId: 6     Aeroportul: Avram Iancu     NumarLocuri: 130, ZborId: 7     Aeroportul: Ghimbav     NumarLocuri: 100])
+31 Mar 2024 20:52:20,004 INFO  ro.mpp2024.repository.AngajatRepo 24 <init> - Initializing AngajatRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:52:20,011 INFO  ro.mpp2024.repository.ZborRepo 23 <init> - Initializing ZborRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:52:20,013 INFO  ro.mpp2024.repository.TuristRepo 25 <init> - Initializing TuristRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:52:20,026 INFO  ro.mpp2024.repository.BiletRepo 33 <init> - Initializing BiletRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:53:48,820 INFO  ro.mpp2024.repository.AngajatRepo 24 <init> - Initializing AngajatRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:53:48,823 INFO  ro.mpp2024.repository.ZborRepo 23 <init> - Initializing ZborRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:53:48,825 INFO  ro.mpp2024.repository.TuristRepo 25 <init> - Initializing TuristRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:53:48,826 INFO  ro.mpp2024.repository.BiletRepo 33 <init> - Initializing BiletRepo with properties: {jdbc.url=jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb} 
+31 Mar 2024 20:53:57,037 TRACE ro.mpp2024.repository.AngajatRepo 51 findAngajatByUserAndPass - Enter
+31 Mar 2024 20:53:57,038 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+31 Mar 2024 20:53:57,038 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+31 Mar 2024 20:53:57,039 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+31 Mar 2024 20:53:57,039 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+31 Mar 2024 20:53:57,039 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+31 Mar 2024 20:53:57,217 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@77d7c1ad)
+31 Mar 2024 20:53:57,220 TRACE ro.mpp2024.repository.AngajatRepo 61 findAngajatByUserAndPass - Exit with(Angajat{user='User1', password='1234', id=1})
+31 Mar 2024 20:53:57,244 TRACE ro.mpp2024.repository.ZborRepo 55 findAll - Enter
+31 Mar 2024 20:53:57,244 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+31 Mar 2024 20:53:57,244 TRACE ro.mpp2024.utils.JdbcUtils 24 getNewConnection - Enter
+31 Mar 2024 20:53:57,244 INFO  ro.mpp2024.utils.JdbcUtils 29 getNewConnection - trying to connect to database ... jdbc:sqlite:C:/Users/adria/IdeaProjects/mpp-proiect-java-Adrian6303/companieZbordb
+31 Mar 2024 20:53:57,245 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - user: null
+31 Mar 2024 20:53:57,245 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - pass: null
+31 Mar 2024 20:53:57,246 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@205d58dc)
+31 Mar 2024 20:53:57,249 TRACE ro.mpp2024.repository.ZborRepo 75 findAll - Exit with([ZborId: 1     Aeroportul: Bergamo     NumarLocuri: 87, ZborId: 2     Aeroportul: Beauvois     NumarLocuri: 127, ZborId: 3     Aeroportul: Male     NumarLocuri: 42, ZborId: 4     Aeroportul: Lutton     NumarLocuri: 130, ZborId: 5     Aeroportul: Otopeni     NumarLocuri: 160, ZborId: 6     Aeroportul: Avram Iancu     NumarLocuri: 130, ZborId: 7     Aeroportul: Ghimbav     NumarLocuri: 100])
+31 Mar 2024 20:53:57,249 TRACE ro.mpp2024.repository.ZborRepo 55 findAll - Enter
+31 Mar 2024 20:53:57,249 TRACE ro.mpp2024.utils.JdbcUtils 47 getConnection - Enter
+31 Mar 2024 20:53:57,250 TRACE ro.mpp2024.utils.JdbcUtils 56 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@205d58dc)
+31 Mar 2024 20:53:57,251 TRACE ro.mpp2024.repository.ZborRepo 75 findAll - Exit with([ZborId: 1     Aeroportul: Bergamo     NumarLocuri: 87, ZborId: 2     Aeroportul: Beauvois     NumarLocuri: 127, ZborId: 3     Aeroportul: Male     NumarLocuri: 42, ZborId: 4     Aeroportul: Lutton     NumarLocuri: 130, ZborId: 5     Aeroportul: Otopeni     NumarLocuri: 160, ZborId: 6     Aeroportul: Avram Iancu     NumarLocuri: 130, ZborId: 7     Aeroportul: Ghimbav     NumarLocuri: 100])
