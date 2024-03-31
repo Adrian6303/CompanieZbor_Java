@@ -36,6 +36,8 @@ public class LoginController implements Observer {
         angajat = service.findAngajatByUserAndPass(username, password);
         if (angajat != null) {
             this.openWindow();
+            userTextField.clear();
+            passwordTextField.clear();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Login failed");
@@ -53,13 +55,13 @@ public class LoginController implements Observer {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("search_view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Search flights");
+        stage.setTitle("Search flights, "+ angajat.getUser());
         SearchController searchController = fxmlLoader.getController();
         searchController.setAngajat(angajat);
         searchController.setService(service);
         stage.setScene(scene);
         stage.show();
-        this.closeWindow();
+        //this.closeWindow();
 
     }
 

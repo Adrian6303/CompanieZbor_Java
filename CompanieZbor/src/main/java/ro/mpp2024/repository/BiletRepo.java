@@ -52,8 +52,14 @@ public class BiletRepo implements Repository<Integer, Bilet>{
                     Zbor zbor=zborRepo.findOne(zborId);
                     int clientId = resultSet.getInt("client");
                     Turist turist = turistRepo.findOne(clientId);
-                    String listaTuristi = resultSet.getString("listaTuristi");
+                    //String listaTuristi = resultSet.getString("listaTuristi");
                     List<Turist> turists= new ArrayList<>();
+
+                    List<String> Turisti = List.of(resultSet.getString("listaTuristi").split(";"));
+                    for (String nume:Turisti){
+                        Turist t = turistRepo.findTuristByNume(nume);
+                        turists.add(t);
+                    }
                     String adresaClient = resultSet.getString("adresaClient");
                     int nrLocuri = resultSet.getInt("nrLocuri");
                     Bilet bilet = new Bilet(angajat,zbor,turist,turists,adresaClient,nrLocuri);
@@ -87,8 +93,19 @@ public class BiletRepo implements Repository<Integer, Bilet>{
                     Zbor zbor=zborRepo.findOne(zborId);
                     int clientId = resultSet.getInt("client");
                     Turist turist = turistRepo.findOne(clientId);
-                    String listaTuristi = resultSet.getString("listaTuristi");
+
+
+                    //String listaTuristi = resultSet.getString("listaTuristi");
+
                     List<Turist> turists= new ArrayList<>();
+
+                    List<String> Turisti = List.of(resultSet.getString("listaTuristi").split(";"));
+                    for (String nume:Turisti){
+                        Turist t = turistRepo.findTuristByNume(nume);
+                        turists.add(t);
+                    }
+
+
                     String adresaClient = resultSet.getString("adresaClient");
                     int nrLocuri = resultSet.getInt("nrLocuri");
                     Bilet bilet = new Bilet(angajat,zbor,turist,turists,adresaClient,nrLocuri);
@@ -112,7 +129,11 @@ public class BiletRepo implements Repository<Integer, Bilet>{
         try (PreparedStatement preparedStatement = connection.prepareStatement("insert into bilet(zbor,client,listaTuristi,adresaClient,nrLocuri,angajat) values (?,?,?,?,?,?)")) {
             preparedStatement.setInt(1, entity.getZbor().getId());
             preparedStatement.setInt(2, entity.getClient().getId());
-            preparedStatement.setString(3, null);
+            String listaTuristi="";
+            for (Turist t:entity.getListaTuristi()){
+                listaTuristi+=t.getNume()+";";
+            }
+            preparedStatement.setString(3, listaTuristi);
             preparedStatement.setString(4, entity.getAdresaClient());
             preparedStatement.setInt(5, entity.getNrLocuri());
             preparedStatement.setInt(6, entity.getAngajat().getId());
@@ -147,7 +168,7 @@ public class BiletRepo implements Repository<Integer, Bilet>{
         try (PreparedStatement preparedStatement = connection.prepareStatement("update bilet set zbor = ?, client=?, listaTuristi=?, adresaClient=?, nrLocuri=?, angajat=? where id=?")) {
             preparedStatement.setInt(1, entity.getZbor().getId());
             preparedStatement.setInt(2, entity.getClient().getId());
-            preparedStatement.setString(3, null);
+            preparedStatement.setString(3, entity.getListaTuristi().toString());
             preparedStatement.setString(4, entity.getAdresaClient());
             preparedStatement.setInt(5, entity.getNrLocuri());
             preparedStatement.setInt(6, entity.getAngajat().getId());

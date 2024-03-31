@@ -23,11 +23,13 @@ public class SearchController implements Observer{
     public ComboBox<String> destinatiiComboBox;
     public Button searchButton;
     public Button confirmButton;
+    public Button logoutButton;
     Service service;
     private Angajat angajat;
 
     public void setService(Service service) {
         this.service = service;
+        service.addObserver(this);
         innitData();
     }
     public void initialize(){
@@ -36,6 +38,7 @@ public class SearchController implements Observer{
     public void innitData(){
 
         destinatiiComboBox.getItems().addAll(service.addDestinations());
+        zboruriListView.getItems().setAll(service.findAllZboruri());
     }
 
 
@@ -80,7 +83,7 @@ public class SearchController implements Observer{
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("buy_view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Buy flight tickets to " + zboruriListView.getSelectionModel().getSelectedItem().getDestinatia());
+        stage.setTitle("Buy flight tickets to " + zboruriListView.getSelectionModel().getSelectedItem().getDestinatia() +", "+ angajat.getUser());
         BuyController buyController = fxmlLoader.getController();
         buyController.setAngajat(angajat);
         buyController.setZbor(zboruriListView.getSelectionModel().getSelectedItem());
@@ -93,5 +96,9 @@ public class SearchController implements Observer{
     private void closeWindow() {
         Stage stage = (Stage) confirmButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void LogoutButtonClick(ActionEvent actionEvent) {
+        this.closeWindow();
     }
 }

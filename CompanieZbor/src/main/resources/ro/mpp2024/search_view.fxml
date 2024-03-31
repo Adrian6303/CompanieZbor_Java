@@ -7,7 +7,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.mpp2024.controller.SearchController">
    <children>
       <DatePicker fx:id="dataPlecariiDatePicker" layoutX="258.0" layoutY="52.0" />
@@ -17,5 +16,6 @@
       <Label layoutX="89.0" layoutY="18.0" text="Choose Destination" />
       <Button fx:id="searchButton" layoutX="461.0" layoutY="52.0" mnemonicParsing="false" onAction="#SearchButtonClick" text="Search" />
       <Button fx:id="confirmButton" layoutX="270.0" layoutY="336.0" mnemonicParsing="false" onAction="#ConfirmButtonClick" text="Confirm" />
+      <Button fx:id="logoutButton" layoutX="66.0" layoutY="336.0" mnemonicParsing="false" onAction="#LogoutButtonClick" text="Logout" />
    </children>
 </AnchorPane>

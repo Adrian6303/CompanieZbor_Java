@@ -121,4 +121,25 @@ public class TuristRepo implements Repository<Integer, Turist>{
         logger.traceExit();
     }
 
+    public Turist findTuristByNume(String nume) {
+        logger.traceEntry("finding task with nume {} ", nume);
+        Connection connection = dbUtils.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement("select * from turist where nume=?")) {
+            preparedStatement.setString(1, nume);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int id = resultSet.getInt("id");
+                    Turist turist = new Turist(nume);
+                    turist.setId(id);
+                    logger.traceExit(turist);
+                    return turist;
+                }
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            System.err.println("Error DB " + e);
+        }
+        logger.traceExit();
+        return null;
+    }
 }

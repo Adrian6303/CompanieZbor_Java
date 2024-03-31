@@ -21,10 +21,7 @@ public class Turist extends Entity<Integer>{
 
     @Override
     public String toString() {
-        return "Turist{" +
-                "nume='" + nume + '\'' +
-                ", id=" + id +
-                '}';
+        return nume;
     }
 
     @Override

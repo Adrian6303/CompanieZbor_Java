@@ -49,7 +49,6 @@ public class Main extends Application {
         biletRepo = new BiletRepo(props,angajatRepo,zborRepo,turistRepo);
 
         service= new Service(angajatRepo, biletRepo, turistRepo, zborRepo);
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login_view.fxml"));
 
         Scene scene = new Scene(loader.load());

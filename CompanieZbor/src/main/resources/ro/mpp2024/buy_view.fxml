@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ro.mpp2024.controller.BuyController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.mpp2024.controller.BuyController">
+   <children>
+      <TextField fx:id="numeClientTextField" layoutX="163.0" layoutY="74.0" />
+      <Label layoutX="73.0" layoutY="78.0" text="Client Name" />
+      <Label layoutX="74.0" layoutY="217.0" text="Other Turist" />
+      <Button fx:id="buyButton" layoutX="264.0" layoutY="317.0" mnemonicParsing="false" onAction="#BuyButtonClick" text="Buy tickets" />
+      <Label layoutX="67.0" layoutY="132.0" text="Client Address" />
+      <TextField fx:id="adresaClientTextField" layoutX="164.0" layoutY="128.0" />
+      <TextArea fx:id="listaTuristiTextArea" layoutX="164.0" layoutY="183.0" prefHeight="86.0" prefWidth="384.0" promptText="Turist1FirstName Turist1LastName;Turist2FirstName Turist2LastName" />
+      <Button fx:id="cancelButton" layoutX="67.0" layoutY="317.0" mnemonicParsing="false" onAction="#CancelButtonClick" text="Cancel" />
+   </children>
 </AnchorPane>

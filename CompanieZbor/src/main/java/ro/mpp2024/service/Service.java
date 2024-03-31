@@ -47,6 +47,7 @@ public class Service implements Observable{
 
     public void addBilet(Bilet bilet){
         biletRepo.save(bilet);
+        notifyObservers();
     }
 
     public void addTurist(Turist turist){
@@ -106,6 +107,35 @@ public class Service implements Observable{
         }
         return zboruriFiltrate;
 
+    }
+
+    public Turist findOrAddTurist(String nume){
+        Turist turist = turistRepo.findTuristByNume(nume);
+        if(turist == null){
+            turist = new Turist(nume);
+            turistRepo.save(turist);
+        }
+        return turist;
+    }
+    public List<Turist> findOrAddTurists(List<String> listaTuristi){
+        List<Turist> turisti = new ArrayList<>();
+        for (String nume:listaTuristi){
+            Turist turist = turistRepo.findTuristByNume(nume);
+            if(turist == null){
+                turist = new Turist(nume);
+                turistRepo.save(turist);
+                turisti.add(turist);
+            }
+            else {
+                turisti.add(turist);
+            }
+
+        }
+        return turisti;
+    }
+    public void updateZbor(Zbor zbor){
+        zborRepo.update(zbor.getId(),zbor);
+        notifyObservers();
     }
     @Override
     public void addObserver(Observer o) {
