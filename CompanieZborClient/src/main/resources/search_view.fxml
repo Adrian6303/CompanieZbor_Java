@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.SearchController">
+   <children>
+      <DatePicker fx:id="dataPlecariiDatePicker" layoutX="258.0" layoutY="52.0" />
+      <Label layoutX="283.0" layoutY="18.0" text="Choose Departure Date" />
+      <ListView fx:id="zboruriListView" layoutX="66.0" layoutY="113.0" prefHeight="200.0" prefWidth="447.0" />
+      <ComboBox fx:id="destinatiiComboBox" layoutX="66.0" layoutY="52.0" prefWidth="150.0" />
+      <Label layoutX="89.0" layoutY="18.0" text="Choose Destination" />
+      <Button fx:id="searchButton" layoutX="461.0" layoutY="52.0" mnemonicParsing="false" onAction="#SearchButtonClick" text="Search" />
+      <Button fx:id="confirmButton" layoutX="270.0" layoutY="336.0" mnemonicParsing="false" onAction="#ConfirmButtonClick" text="Confirm" />
+      <Button fx:id="logoutButton" layoutX="66.0" layoutY="336.0" mnemonicParsing="false" onAction="#LogoutButtonClick" text="Logout" />
+   </children>
+</AnchorPane>

@@ -2,12 +2,33 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="CompanieZborClient" target="17" />
+      <module name="CompanieZborClient.main" target="17" />
+      <module name="CompanieZborClient.test" target="17" />
+      <module name="CompanieZborDomain" target="17" />
+      <module name="CompanieZborDomain.main" target="17" />
+      <module name="CompanieZborDomain.test" target="17" />
+      <module name="CompanieZborNetworking" target="17" />
+      <module name="CompanieZborNetworking.main" target="17" />
+      <module name="CompanieZborNetworking.test" target="17" />
+      <module name="CompanieZborPersistance" target="17" />
+      <module name="CompanieZborPersistance.main" target="17" />
+      <module name="CompanieZborPersistance.test" target="17" />
+      <module name="CompanieZborServer" target="17" />
+      <module name="CompanieZborServer.main" target="17" />
+      <module name="CompanieZborServer.test" target="17" />
+      <module name="CompanieZborService" target="17" />
+      <module name="CompanieZborService.main" target="17" />
+      <module name="CompanieZborService.test" target="17" />
       <module name="CompanieZborUI" target="17" />
       <module name="CompanieZborUI.main" target="17" />
       <module name="CompanieZborUI.test" target="17" />
       <module name="CompanieZboruri" target="17" />
       <module name="CompanieZboruri.main" target="17" />
       <module name="CompanieZboruri.test" target="17" />
+      <module name="mpp-project-java-Adrian6303.CompanieZborDomain" target="17" />
+      <module name="mpp-project-java-Adrian6303.CompanieZborDomain.main" target="17" />
+      <module name="mpp-project-java-Adrian6303.CompanieZborDomain.test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

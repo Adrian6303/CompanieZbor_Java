@@ -4,6 +4,21 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="corretto-17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/CompanieZborClient" />
+            <option value="$PROJECT_DIR$/CompanieZborModel" />
+            <option value="$PROJECT_DIR$/CompanieZborNetworking" />
+            <option value="$PROJECT_DIR$/CompanieZborPersistance" />
+            <option value="$PROJECT_DIR$/CompanieZborServer" />
+            <option value="$PROJECT_DIR$/CompanieZborService" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/CompanieZbor" />
         <option name="gradleHome" value="" />
         <option name="gradleJvm" value="corretto-17" />

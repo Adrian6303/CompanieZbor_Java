@@ -1,0 +1,8 @@
+rootProject.name = 'mpp-project-java-Adrian6303'
+include 'CompanieZborModel'
+include 'CompanieZborPersistance'
+include 'CompanieZborServer'
+include 'CompanieZborService'
+include 'CompanieZborClient'
+include 'CompanieZborNetworking'
+
