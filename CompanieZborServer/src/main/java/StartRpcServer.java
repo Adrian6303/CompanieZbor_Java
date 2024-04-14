@@ -13,7 +13,6 @@ import java.util.Properties;
 public class StartRpcServer {
     private static int defaultPort=55555;
     public static void main(String[] args) {
-        // UserRepository userRepo=new UserRepositoryMock();
         Properties serverProps=new Properties();
         try {
             serverProps.load(StartRpcServer.class.getResourceAsStream("/server.properties"));
@@ -23,6 +22,8 @@ public class StartRpcServer {
             System.err.println("Cannot find server.properties "+e);
             return;
         }
+
+
 
         AngajatRepo angajatRepo=new AngajatRepo(serverProps);
         TuristRepo turistRepo=new TuristRepo(serverProps);

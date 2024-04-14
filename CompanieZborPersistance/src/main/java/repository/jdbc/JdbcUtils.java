@@ -22,20 +22,21 @@ public class JdbcUtils {
 
     private Connection getNewConnection(){
         logger.traceEntry();
-
+        String driver=jdbcProps.getProperty("jdbc.driver");
         String url=jdbcProps.getProperty("jdbc.url");
         String user=jdbcProps.getProperty("jdbc.user");
         String pass=jdbcProps.getProperty("jdbc.pass");
+        logger.info("driver: {}",driver);
         logger.info("trying to connect to database ... {}",url);
         logger.info("user: {}",user);
         logger.info("pass: {}", pass);
         Connection con=null;
         try {
-
-            if (user!=null && pass!=null)
-                con= DriverManager.getConnection(url,user,pass);
-            else
-                con=DriverManager.getConnection(url);
+            Class.forName(driver);
+            con= DriverManager.getConnection(url,user,pass);
+        } catch (ClassNotFoundException e) {
+            logger.error(e);
+            System.out.println("Error loading driver "+e);
         } catch (SQLException e) {
             logger.error(e);
             System.out.println("Error getting connection "+e);

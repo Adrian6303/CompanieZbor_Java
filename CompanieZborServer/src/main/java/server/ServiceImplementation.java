@@ -48,8 +48,13 @@ public class ServiceImplementation implements IService {
         biletRepo.save(bilet);
     }
 
-    public Angajat findAngajatByUserAndPass(String username,String password){
-        return angajatRepo.findAngajatByUserAndPass(username,password);
+    public Angajat findAngajatByUserAndPass(String username,String password) throws Exception{
+        Angajat angajat = angajatRepo.findAngajatByUserAndPass(username,password);
+        if (angajat != null) {
+            return angajat;
+        } else {
+            throw new Exception("Angajatul nu exista");
+        }
     }
 
     public List<String> addDestinations(){

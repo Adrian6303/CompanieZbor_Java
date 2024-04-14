@@ -84,7 +84,7 @@ public class SearchController implements Observer{
 
     private void openWindow() throws IOException {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(StartRpcClientFX.class.getResource("buy_view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("buy_view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Buy flight tickets to " + zboruriListView.getSelectionModel().getSelectedItem().getDestinatia() +", "+ angajat.getUser());
         BuyController buyController = fxmlLoader.getController();

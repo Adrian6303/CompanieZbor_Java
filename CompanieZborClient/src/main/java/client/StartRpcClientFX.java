@@ -57,44 +57,9 @@ public class StartRpcClientFX extends Application {
         ctrl.setService(server);
 
 
-
-
-//        FXMLLoader cloader = new FXMLLoader(
-//                getClass().getClassLoader().getResource("search_view.fxml"));
-//        Parent croot=cloader.load();
-
-//
-//        LoginController loginCtrl =
-//                cloader.<~>getController();
-//        loginCtrl.setService(server);
-
-        //ctrl.setService(chatCtrl);
-        //ctrl.setParent(croot);
-
         primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
-
-
-
-
-
-
-/*      angajatRepo = new AngajatRepo(props);
-        zborRepo = new ZborRepo(props);
-        turistRepo = new TuristRepo(props);
-        biletRepo = new BiletRepo(props,angajatRepo,zborRepo,turistRepo);
-
-        service= new Service(angajatRepo, biletRepo, turistRepo, zborRepo);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("login_view.fxml"));
-
-        Scene scene = new Scene(loader.load());
-        stage.setTitle("Login");
-        LoginController loginController = loader.getController();
-        loginController.setService(service);
-        stage.setScene(scene);
-        stage.show();*/
 
     }
 

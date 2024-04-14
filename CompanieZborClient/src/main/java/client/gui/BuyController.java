@@ -57,11 +57,22 @@ public class BuyController implements Observer {
         String numeClient = numeClientTextField.getText();
         Turist client = service.findOrAddTurist(numeClient);
         List<Turist> listaTuristi = new ArrayList<>();
-        listaTuristi.add(client);
+        //listaTuristi.add(client);
         String adresaClient = adresaClientTextField.getText();
-        List<String> Turisti = List.of(listaTuristiTextArea.getText().split(";"));
-        listaTuristi.addAll(service.findOrAddTurists(Turisti));
-        int nrLocuri = listaTuristi.size() + 1;
+        if (listaTuristiTextArea.getText().equals("")) {
+            listaTuristi.add(client);
+        }
+        else {
+            listaTuristi.add(client);
+            List<String> Turisti = List.of(listaTuristiTextArea.getText().split(";"));
+
+            for (String turist : Turisti) {
+                listaTuristi.add(service.findOrAddTurist(turist));
+            }
+        }
+
+        //listaTuristi.addAll(service.findOrAddTurists(Turisti));
+        int nrLocuri = listaTuristi.size();
         this.zbor.setNrLocuri(this.zbor.getNrLocuri() - nrLocuri);
         service.updateZbor(this.zbor);
         Bilet bilet = new Bilet(angajat,zbor, client,listaTuristi,adresaClient, nrLocuri);
@@ -80,7 +91,7 @@ public class BuyController implements Observer {
 
     private void openWindow() throws IOException {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(StartRpcClientFX.class.getResource("search_view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("search_view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Search flights, "+ angajat.getUser());
         SearchController searchController = fxmlLoader.getController();

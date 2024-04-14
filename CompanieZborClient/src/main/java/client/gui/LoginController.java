@@ -3,6 +3,7 @@ package client.gui;
 import client.StartRpcClientFX;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -53,7 +54,7 @@ public class LoginController implements Observer {
 
     private void openWindow() throws IOException {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(StartRpcClientFX.class.getResource("search_view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("search_view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Search flights, "+ angajat.getUser());
         SearchController searchController = fxmlLoader.getController();

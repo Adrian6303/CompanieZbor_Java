@@ -68,11 +68,11 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\CompanieZborServer-1.0.jar;%APP_HOME%\lib\CompanieZborNetworking-1.0.jar;%APP_HOME%\lib\CompanieZborService-1.0.jar;%APP_HOME%\lib\CompanieZborPersistance-1.0.jar;%APP_HOME%\lib\log4j-core-2.14.0.jar;%APP_HOME%\lib\log4j-api-2.14.0.jar;%APP_HOME%\lib\CompanieZborModel-1.0.jar;%APP_HOME%\lib\sqlite-jdbc-3.36.0.3.jar;%APP_HOME%\lib\gson-2.9.0.jar
+set CLASSPATH=%APP_HOME%\lib\CompanieZborServer-1.0.jar;%APP_HOME%\lib\CompanieZborNetworking-1.0.jar;%APP_HOME%\lib\CompanieZborService-1.0.jar;%APP_HOME%\lib\CompanieZborPersistance-1.0.jar;%APP_HOME%\lib\log4j-core-2.14.0.jar;%APP_HOME%\lib\log4j-api-2.14.0.jar;%APP_HOME%\lib\CompanieZborModel-1.0.jar;%APP_HOME%\lib\sqlite-jdbc-3.45.1.0.jar;%APP_HOME%\lib\gson-2.9.0.jar;%APP_HOME%\lib\slf4j-api-1.7.36.jar
 
 
 @rem Execute CompanieZborServer
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %COMPANIE_ZBOR_SERVER_OPTS%  -classpath "%CLASSPATH%" StartJsonServer %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %COMPANIE_ZBOR_SERVER_OPTS%  -classpath "%CLASSPATH%" StartRpcServer %*
 
 :end
 @rem End local scope for the variables with windows NT shell

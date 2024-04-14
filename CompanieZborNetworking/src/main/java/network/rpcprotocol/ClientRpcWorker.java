@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.List;
 
 
 public class ClientRpcWorker implements Runnable, Observer {
@@ -95,18 +96,78 @@ public class ClientRpcWorker implements Runnable, Observer {
     private static Response okResponse=new Response.Builder().type(ResponseType.OK).build();
 
     private Response handleRequest(Request request){
-//        Response response=null;
-//        if (request.type()== RequestType.LOGIN){
-//            System.out.println("Login request ..."+request.type());
-//            Angajat angajat=(Angajat)request.data();
-//            try {
-//                server.login(angajat, this);
-//                return okResponse;
-//            } catch (Exception e) {
-//                connected=false;
-//                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
-//            }
-//        }
+        Response response=null;
+        if (request.type()== RequestType.LOGIN){
+            System.out.println("Login request ..."+request.type());
+            Angajat angajat=(Angajat)request.data();
+            try {
+                Angajat a=server.findAngajatByUserAndPass(angajat.getUser(), angajat.getPassword());
+                Response response1 = new Response.Builder().type(ResponseType.OK).data(a).build();
+                return response1;
+            } catch (Exception e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).data(null).build();
+            }
+        }
+        if (request.type()== RequestType.GET_DESTINATIONS){
+            System.out.println("GetDestinations Request ...");
+            try {
+                List<String> destinatii=server.addDestinations();
+                return new Response.Builder().type(ResponseType.GET_DESTINATIONS).data(destinatii).build();
+            } catch (Exception e) {
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.GET_ZBORURI){
+            System.out.println("GetZboruri Request ...");
+            try {
+                List<Zbor> zboruri=server.findAllZboruri();
+                return new Response.Builder().type(ResponseType.GET_ZBORURI).data(zboruri).build();
+            } catch (Exception e) {
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.FILTER_ZBORURI){
+            System.out.println("FilterZboruri Request ...");
+            Zbor zbor=(Zbor)request.data();
+            try {
+                List<Zbor> zboruri=server.findZboruriByDestinatieAndDate(zbor.getDestinatia(), zbor.getDataPlecarii());
+                return new Response.Builder().type(ResponseType.FILTER_ZBORURI).data(zboruri).build();
+            } catch (Exception e) {
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.FIND_ADD_TURIST){
+            System.out.println("FindAddTurist Request ...");
+            String nume=(String) request.data();
+            try {
+                Turist t =server.findOrAddTurist(nume);
+                return new Response.Builder().type(ResponseType.FIND_ADD_TURIST).data(t).build();
+            } catch (Exception e) {
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.UPDATE_ZBOR){
+            System.out.println("UpdateZbor Request ...");
+            Zbor zbor=(Zbor)request.data();
+            try {
+                server.updateZbor(zbor);
+                return okResponse;
+            } catch (Exception e) {
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.BUY_BILET){
+            System.out.println("BuyBilet Request ...");
+            Bilet bilet=(Bilet)request.data();
+            try {
+                server.addBilet(bilet);
+                return okResponse;
+            } catch (Exception e) {
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+
 //        if (request.type()== RequestType.LOGOUT){
 //            System.out.println("Logout request");
 //           // LogoutRequest logReq=(LogoutRequest)request;
