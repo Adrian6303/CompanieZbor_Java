@@ -33,66 +33,6 @@ public class ServicesRpcProxy implements IService {
         qresponses=new LinkedBlockingQueue<Response>();
     }
 
-
-//    public void login(Angajat angajat, Observer observer) throws Exception {
-//        initializeConnection();
-//        Request req = new Request.Builder()
-//                .type(RequestType.LOGIN)
-//                .data(angajat)
-//                .build();
-//        sendRequest(req);
-//        Response response = readResponse();
-//        if (response.type() == ResponseType.OK) {
-//            this.observer = observer;
-//            return;
-//        }
-//        if (response.type() == ResponseType.ERROR) {
-//            String err = response.data().toString();
-//            closeConnection();
-//            throw new Exception(err);
-//        }
-//    }
-
-//
-//    public void sendMessage(Message message) throws ChatException {
-//        MessageDTO mdto= DTOUtils.getDTO(message);
-//        Request req=new Request.Builder().type(RequestType.SEND_MESSAGE).data(mdto).build();
-//        sendRequest(req);
-//        Response response=readResponse();
-//        if (response.type()== ResponseType.ERROR){
-//            String err=response.data().toString();
-//            throw new ChatException(err);
-//        }
-//    }
-//
-//    public void logout(User user, IChatObserver client) throws ChatException {
-//        UserDTO udto= DTOUtils.getDTO(user);
-//        Request req=new Request.Builder().type(RequestType.LOGOUT).data(udto).build();
-//        sendRequest(req);
-//        Response response=readResponse();
-//        closeConnection();
-//        if (response.type()== ResponseType.ERROR){
-//            String err=response.data().toString();
-//            throw new ChatException(err);
-//        }
-//    }
-//
-//
-//
-//    public User[] getLoggedFriends(User user) throws ChatException {
-//        UserDTO udto= DTOUtils.getDTO(user);
-//        Request req=new Request.Builder().type(RequestType.GET_LOGGED_FRIENDS).data(udto).build();
-//        sendRequest(req);
-//        Response response=readResponse();
-//        if (response.type()== ResponseType.ERROR){
-//            String err=response.data().toString();
-//            throw new ChatException(err);
-//        }
-//        UserDTO[] frDTO=(UserDTO[])response.data();
-//        User[] friends= DTOUtils.getFromDTO(frDTO);
-//        return friends;
-//    }
-
     private void closeConnection() {
         finished=true;
         try {
@@ -106,7 +46,7 @@ public class ServicesRpcProxy implements IService {
 
     }
 
-    private void sendRequest(Request request)throws Exception {
+    private synchronized void sendRequest(Request request)throws Exception {
         try {
             output.writeObject(request);
             output.flush();
@@ -146,43 +86,22 @@ public class ServicesRpcProxy implements IService {
 
 
     private void handleUpdate(Response response){
-//        if (response.type()== ResponseType.FRIEND_LOGGED_IN){
-//
-//            User friend= DTOUtils.getFromDTO((UserDTO) response.data());
-//            System.out.println("Friend logged in "+friend);
-//            try {
-//                client.friendLoggedIn(friend);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        if (response.type()== ResponseType.FRIEND_LOGGED_OUT){
-//            User friend= DTOUtils.getFromDTO((UserDTO)response.data());
-//            System.out.println("Friend logged out "+friend);
-//            try {
-//                client.friendLoggedOut(friend);
-//            } catch (ChatException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        if (response.type()== ResponseType.NEW_MESSAGE){
-//            Message message= DTOUtils.getFromDTO((MessageDTO)response.data());
-//            try {
-//                client.messageReceived(message);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
+        if (response.type() ==ResponseType.UPDATE_ZBOR){
+            Zbor zbor= (Zbor) response.data();
+            try {
+                observer.updateZbor(zbor);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private boolean isUpdate(Response response){
-        return response.type()== ResponseType.UPDATE ;
+        return response.type()== ResponseType.UPDATE_ZBOR;
     }
 
     @Override
     public List<Zbor> findAllZboruri() throws Exception {
-        initializeConnection();
         Request req = new Request.Builder()
                 .type(RequestType.GET_ZBORURI)
                 .build();
@@ -192,7 +111,6 @@ public class ServicesRpcProxy implements IService {
     }
     @Override
     public void addBilet(Bilet bilet) throws Exception {
-        initializeConnection();
         Request req = new Request.Builder()
                 .type(RequestType.BUY_BILET)
                 .data(bilet)
@@ -202,7 +120,7 @@ public class ServicesRpcProxy implements IService {
 
     }
     @Override
-    public Angajat findAngajatByUserAndPass(String username, String password) throws Exception {
+    public Angajat findAngajatByUserAndPass(String username, String password,Observer observer) throws Exception {
         initializeConnection();
         Angajat angajat = new Angajat(username, password);
         Request req = new Request.Builder()
@@ -216,15 +134,19 @@ public class ServicesRpcProxy implements IService {
             return (Angajat) response.data();
         }
         if (response.type() == ResponseType.ERROR) {
-            //String err = response.data().toString();
             closeConnection();
             return null;
         }
         return null;
     }
+
+    @Override
+    public void setObserver(String name, Observer obs) {
+
+    }
+
     @Override
     public List<String> addDestinations() throws Exception {
-        initializeConnection();
         Request req = new Request.Builder()
                 .type(RequestType.GET_DESTINATIONS)
                 .build();
@@ -236,7 +158,6 @@ public class ServicesRpcProxy implements IService {
 
     @Override
     public List<Zbor> findZboruriByDestinatieAndDate(String destinatie, Date dataplecarii) throws Exception {
-        initializeConnection();
         Zbor zbor = new Zbor(destinatie, dataplecarii, null, 0);
 
         Request req = new Request.Builder()
@@ -250,7 +171,6 @@ public class ServicesRpcProxy implements IService {
 
     @Override
     public Turist findOrAddTurist(String nume) throws Exception {
-        initializeConnection();
         Request req = new Request.Builder()
                 .type(RequestType.FIND_ADD_TURIST)
                 .data(nume)
@@ -267,7 +187,7 @@ public class ServicesRpcProxy implements IService {
 
     @Override
     public void updateZbor(Zbor zbor) throws Exception {
-        initializeConnection();
+
         Request req = new Request.Builder()
                 .type(RequestType.UPDATE_ZBOR)
                 .data(zbor)

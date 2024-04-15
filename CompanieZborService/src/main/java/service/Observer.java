@@ -1,5 +1,8 @@
 package service;
 
+import domain.Zbor;
+
 public interface Observer {
-    void update();
+
+    void updateZbor(Zbor zbor) throws Exception;
 }

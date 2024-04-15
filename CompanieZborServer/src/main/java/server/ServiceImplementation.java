@@ -15,6 +15,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ServiceImplementation implements IService {
 
@@ -23,13 +26,15 @@ public class ServiceImplementation implements IService {
     private TuristRepo turistRepo;
     private ZborRepo zborRepo;
 
-    private Map<Angajat, Observer> observers;
+    private Map<String, Observer> observers;
 
+    private final int defaultThreadsNo=5;
     public ServiceImplementation(AngajatRepo angajatRepo, BiletRepo biletRepo, TuristRepo turistRepo, ZborRepo zborRepo) {
         this.angajatRepo = angajatRepo;
         this.biletRepo = biletRepo;
         this.turistRepo = turistRepo;
         this.zborRepo = zborRepo;
+        observers = new ConcurrentHashMap<>();
     }
 
 
@@ -48,9 +53,14 @@ public class ServiceImplementation implements IService {
         biletRepo.save(bilet);
     }
 
-    public Angajat findAngajatByUserAndPass(String username,String password) throws Exception{
+    public void setObserver(String name,Observer observer)
+    {
+        observers.put(name,observer);
+    }
+    public Angajat findAngajatByUserAndPass(String username,String password,Observer observer) throws Exception{
         Angajat angajat = angajatRepo.findAngajatByUserAndPass(username,password);
         if (angajat != null) {
+            observers.put(username,observer);
             return angajat;
         } else {
             throw new Exception("Angajatul nu exista");
@@ -85,7 +95,9 @@ public class ServiceImplementation implements IService {
         if(turist == null){
             turist = new Turist(nume);
             turistRepo.save(turist);
+            turist=turistRepo.findTuristByNume(nume);
         }
+
         return turist;
     }
     public List<Turist> findOrAddTurists(List<String> listaTuristi){
@@ -104,9 +116,29 @@ public class ServiceImplementation implements IService {
         }
         return turisti;
     }
-    public void updateZbor(Zbor zbor){
+    public void updateZbor(Zbor zbor) throws Exception {
         zborRepo.update(zbor.getId(),zbor);
+        notifyall(zbor);
     }
 
+    public void notifyall(Zbor zbor)
+    {
+        ExecutorService executor = Executors.newFixedThreadPool(defaultThreadsNo);
 
+        for(var obs:observers.values())
+        {
+            if(obs==null)
+                continue;
+            executor.execute(()->{
+                try{
+                    obs.updateZbor(zbor);
+
+                }catch (Exception ex)
+                {
+                    throw new RuntimeException(ex);
+                }
+            });
+
+        }
+    }
 }

@@ -38,11 +38,11 @@ public class BuyController implements Observer {
     }
 
 
-    @Override
-    public void update() {
-        innitData();
-    }
 
+    @Override
+    public void updateZbor(Zbor zbor) throws Exception {
+
+    }
 
 
     public void setZbor(Zbor zbor) {
@@ -57,7 +57,6 @@ public class BuyController implements Observer {
         String numeClient = numeClientTextField.getText();
         Turist client = service.findOrAddTurist(numeClient);
         List<Turist> listaTuristi = new ArrayList<>();
-        //listaTuristi.add(client);
         String adresaClient = adresaClientTextField.getText();
         if (listaTuristiTextArea.getText().equals("")) {
             listaTuristi.add(client);
@@ -77,31 +76,13 @@ public class BuyController implements Observer {
         service.updateZbor(this.zbor);
         Bilet bilet = new Bilet(angajat,zbor, client,listaTuristi,adresaClient, nrLocuri);
         service.addBilet(bilet);
-        try {
-            openWindow();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void CancelButtonClick(ActionEvent actionEvent) throws IOException {
-        openWindow();
-    }
-
-    private void openWindow() throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("search_view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Search flights, "+ angajat.getUser());
-        SearchController searchController = fxmlLoader.getController();
-        searchController.setAngajat(angajat);
-        searchController.setService(service);
-        stage.setScene(scene);
-        stage.show();
         this.closeWindow();
-
     }
+
+    public void CancelButtonClick(ActionEvent actionEvent) throws Exception {
+        this.closeWindow();
+    }
+
 
     private void closeWindow() {
         Stage stage = (Stage) cancelButton.getScene().getWindow();

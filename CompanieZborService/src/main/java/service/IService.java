@@ -11,8 +11,9 @@ public interface IService {
 
     void addBilet(Bilet bilet) throws Exception;
 
-    Angajat findAngajatByUserAndPass(String username,String password) throws Exception;
+    Angajat findAngajatByUserAndPass(String username,String password,Observer observer) throws Exception;
 
+    public void setObserver(String name,Observer obs);
     List<String> addDestinations() throws Exception;
 
     List<Zbor> findZboruriByDestinatieAndDate(String destinatie, Date dataplecarii) throws Exception;

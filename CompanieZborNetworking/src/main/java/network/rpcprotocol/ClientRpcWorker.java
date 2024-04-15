@@ -59,39 +59,7 @@ public class ClientRpcWorker implements Runnable, Observer {
             System.out.println("Error "+e);
         }
     }
-//
-//    public void messageReceived(Message message) throws ChatException {
-//        MessageDTO mdto= DTOUtils.getDTO(message);
-//        Response resp=new Response.Builder().type(ResponseType.NEW_MESSAGE).data(mdto).build();
-//        System.out.println("Message received  "+message);
-//        try {
-//            sendResponse(resp);
-//        } catch (IOException e) {
-//            throw new ChatException("Sending error: "+e);
-//        }
-//    }
-//
-//    public void friendLoggedIn(User friend) throws ChatException {
-//        UserDTO udto= DTOUtils.getDTO(friend);
-//        Response resp=new Response.Builder().type(ResponseType.FRIEND_LOGGED_IN).data(udto).build();
-//        System.out.println("Friend logged in "+friend);
-//        try {
-//            sendResponse(resp);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public void friendLoggedOut(User friend) throws ChatException {
-//        UserDTO udto= DTOUtils.getDTO(friend);
-//        Response resp=new Response.Builder().type(ResponseType.FRIEND_LOGGED_OUT).data(udto).build();
-//        System.out.println("Friend logged out "+friend);
-//        try {
-//            sendResponse(resp);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
 
     private static Response okResponse=new Response.Builder().type(ResponseType.OK).build();
 
@@ -101,7 +69,7 @@ public class ClientRpcWorker implements Runnable, Observer {
             System.out.println("Login request ..."+request.type());
             Angajat angajat=(Angajat)request.data();
             try {
-                Angajat a=server.findAngajatByUserAndPass(angajat.getUser(), angajat.getPassword());
+                Angajat a=server.findAngajatByUserAndPass(angajat.getUser(), angajat.getPassword(),this);
                 Response response1 = new Response.Builder().type(ResponseType.OK).data(a).build();
                 return response1;
             } catch (Exception e) {
@@ -167,46 +135,6 @@ public class ClientRpcWorker implements Runnable, Observer {
                 return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
             }
         }
-
-//        if (request.type()== RequestType.LOGOUT){
-//            System.out.println("Logout request");
-//           // LogoutRequest logReq=(LogoutRequest)request;
-//            UserDTO udto=(UserDTO)request.data();
-//            User user= DTOUtils.getFromDTO(udto);
-//            try {
-//                server.logout(user, this);
-//                connected=false;
-//                return okResponse;
-//
-//            } catch (Exception e) {
-//                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
-//            }
-//        }
-//        if (request.type()== RequestType.SEND_MESSAGE){
-//            System.out.println("SendMessageRequest ...");
-//            MessageDTO mdto=(MessageDTO)request.data();
-//            Message message= DTOUtils.getFromDTO(mdto);
-//            try {
-//                server.sendMessage(message);
-//                return okResponse;
-//            } catch (Exception e) {
-//                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
-//            }
-//        }
-//
-//        if (request.type()== RequestType.GET_LOGGED_FRIENDS){
-//            System.out.println("GetLoggedFriends Request ...");
-//            UserDTO udto=(UserDTO)request.data();
-//            User user= DTOUtils.getFromDTO(udto);
-//            try {
-//                User[] friends=server.getLoggedFriends(user);
-//                UserDTO[] frDTO= DTOUtils.getDTO(friends);
-//                return new Response.Builder().type(ResponseType.GET_LOGGED_FRIENDS).data(frDTO).build();
-//            } catch (Exception e) {
-//                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
-//            }
-//        }
-//        return response;
         return null;
     }
 
@@ -218,8 +146,15 @@ public class ClientRpcWorker implements Runnable, Observer {
         }
     }
 
-    @Override
-    public void update() {
 
+    @Override
+    public void updateZbor(Zbor zbor) throws Exception {
+        Response resp=new Response.Builder().type(ResponseType.UPDATE_ZBOR).data(zbor).build();
+        System.out.println("Updated zbor in "+zbor);
+        try {
+            sendResponse(resp);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

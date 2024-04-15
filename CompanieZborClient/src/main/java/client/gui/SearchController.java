@@ -1,6 +1,7 @@
 package client.gui;
 
 import client.StartRpcClientFX;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,18 +26,18 @@ public class SearchController implements Observer{
     IService service;
     private Angajat angajat;
 
-    public void setService(IService service)  {
+    public void setService(IService service) throws Exception {
         this.service = service;
-        //service.addObserver(this);
+        destinatiiComboBox.getItems().addAll(service.addDestinations());
         innitData();
     }
+
     public void initialize(){
         destinatiiComboBox.setPromptText("Destinatie");
     }
     public void innitData()  {
 
         try {
-            destinatiiComboBox.getItems().addAll(service.addDestinations());
             zboruriListView.getItems().setAll(service.findAllZboruri());
         }
         catch (Exception e){
@@ -45,9 +46,17 @@ public class SearchController implements Observer{
     }
 
 
+
     @Override
-    public void update() {
-        innitData();
+    public void updateZbor(Zbor zbor) throws Exception {
+        Platform.runLater(() ->{
+            try {
+                innitData();
+            }
+            catch (Exception e){
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public void setAngajat(Angajat angajat) {
@@ -93,7 +102,6 @@ public class SearchController implements Observer{
         buyController.setService(service);
         stage.setScene(scene);
         stage.show();
-        this.closeWindow();
 
     }
     private void closeWindow() {
