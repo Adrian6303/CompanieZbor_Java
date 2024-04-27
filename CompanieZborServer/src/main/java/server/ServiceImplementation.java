@@ -13,6 +13,7 @@ import service.Observer;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -53,9 +54,15 @@ public class ServiceImplementation implements IService {
         biletRepo.save(bilet);
     }
 
-    public void setObserver(String name,Observer observer)
+    public void setObserver(Angajat angajat,Observer observer)
     {
-        observers.put(name,observer);
+        for (Map.Entry<String, Observer> entry : observers.entrySet()) {
+            if (entry.getKey().equals(angajat.getUser())) {
+                observers.put(angajat.getUser(), observer);
+                return;
+            }
+        }
+        //observers.put(angajat.getUser(),observer);
     }
     public Angajat findAngajatByUserAndPass(String username,String password,Observer observer) throws Exception{
         Angajat angajat = angajatRepo.findAngajatByUserAndPass(username,password);
@@ -66,18 +73,6 @@ public class ServiceImplementation implements IService {
             throw new Exception("Angajatul nu exista");
         }
     }
-
-    public List<String> addDestinations(){
-        List<Zbor> zboruri = zborRepo.findAll();
-        List<String> destinatii = new ArrayList<>();
-        for(Zbor zbor:zboruri){
-            if(!destinatii.contains(zbor.getDestinatia())){
-                destinatii.add(zbor.getDestinatia());
-            }
-        }
-        return destinatii;
-    }
-
     public List<Zbor> findZboruriByDestinatieAndDate(String destinatie, Date dataplecarii){
         List<Zbor> zboruri = zborRepo.findAll();
         List<Zbor> zboruriFiltrate = new ArrayList<>();
@@ -100,25 +95,23 @@ public class ServiceImplementation implements IService {
 
         return turist;
     }
-    public List<Turist> findOrAddTurists(List<String> listaTuristi){
-        List<Turist> turisti = new ArrayList<>();
-        for (String nume:listaTuristi){
-            Turist turist = turistRepo.findTuristByNume(nume);
-            if(turist == null){
-                turist = new Turist(nume);
-                turistRepo.save(turist);
-                turisti.add(turist);
-            }
-            else {
-                turisti.add(turist);
-            }
 
-        }
-        return turisti;
-    }
     public void updateZbor(Zbor zbor) throws Exception {
         zborRepo.update(zbor.getId(),zbor);
         notifyall(zbor);
+    }
+
+    @Override
+    public void Logout(Angajat angajat) {
+        Iterator<Map.Entry<String, Observer>> iterator = observers.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, Observer> entry = iterator.next();
+            if (entry.getKey().equals(angajat.getUser())) {
+                iterator.remove();
+                break;
+            }
+        }
+
     }
 
     public void notifyall(Zbor zbor)

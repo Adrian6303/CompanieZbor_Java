@@ -13,14 +13,12 @@ public interface IService {
 
     Angajat findAngajatByUserAndPass(String username,String password,Observer observer) throws Exception;
 
-    public void setObserver(String name,Observer obs);
-    List<String> addDestinations() throws Exception;
+    void setObserver(Angajat angajat,Observer obs);
 
     List<Zbor> findZboruriByDestinatieAndDate(String destinatie, Date dataplecarii) throws Exception;
 
     Turist findOrAddTurist(String nume) throws Exception;
 
-    List<Turist> findOrAddTurists(List<String> listaTuristi) throws Exception;
-
     void updateZbor(Zbor zbor) throws Exception;
+    void Logout(Angajat angajat) throws Exception;
 }

@@ -44,7 +44,7 @@ public class LoginController implements Observer {
             stage.setTitle("Search flights for Angajat: " +  angajat.getUser());
             searchController.setAngajat(angajat);
             searchController.setService(service);
-            service.setObserver(angajat.getUser(),searchController);
+            service.setObserver(angajat,searchController);
             stage.setScene(scene);
             stage.show();
             userTextField.clear();

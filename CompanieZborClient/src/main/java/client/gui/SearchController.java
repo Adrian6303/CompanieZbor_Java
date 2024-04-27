@@ -13,6 +13,7 @@ import service.*;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchController implements Observer{
@@ -28,7 +29,7 @@ public class SearchController implements Observer{
 
     public void setService(IService service) throws Exception {
         this.service = service;
-        destinatiiComboBox.getItems().addAll(service.addDestinations());
+        //destinatiiComboBox.getItems().addAll(service.addDestinations());
         innitData();
     }
 
@@ -38,7 +39,16 @@ public class SearchController implements Observer{
     public void innitData()  {
 
         try {
-            zboruriListView.getItems().setAll(service.findAllZboruri());
+            List<Zbor> zboruri=service.findAllZboruri();
+            List<String> destinatii = new ArrayList<String>();
+            zboruriListView.getItems().setAll(zboruri);
+            for (Zbor z:zboruri) {
+                if(!destinatii.contains(z.getDestinatia()))
+                {
+                    destinatii.add(z.getDestinatia());
+                }
+            }
+            destinatiiComboBox.getItems().addAll(destinatii);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -109,7 +119,8 @@ public class SearchController implements Observer{
         stage.close();
     }
 
-    public void LogoutButtonClick(ActionEvent actionEvent) {
+    public void LogoutButtonClick(ActionEvent actionEvent) throws Exception {
+        service.Logout(angajat);
         this.closeWindow();
     }
 }

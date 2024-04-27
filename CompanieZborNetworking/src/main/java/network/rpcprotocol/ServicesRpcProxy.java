@@ -141,18 +141,7 @@ public class ServicesRpcProxy implements IService {
     }
 
     @Override
-    public void setObserver(String name, Observer obs) {
-
-    }
-
-    @Override
-    public List<String> addDestinations() throws Exception {
-        Request req = new Request.Builder()
-                .type(RequestType.GET_DESTINATIONS)
-                .build();
-        sendRequest(req);
-        Response response = readResponse();
-        return (List<String>) response.data();
+    public void setObserver(Angajat angajat, Observer obs) {
 
     }
 
@@ -181,11 +170,6 @@ public class ServicesRpcProxy implements IService {
     }
 
     @Override
-    public List<Turist> findOrAddTurists(List<String> listaTuristi) throws Exception {
-        return null;
-    }
-
-    @Override
     public void updateZbor(Zbor zbor) throws Exception {
 
         Request req = new Request.Builder()
@@ -194,6 +178,16 @@ public class ServicesRpcProxy implements IService {
                 .build();
         sendRequest(req);
         Response response = readResponse();
+    }
+
+    @Override
+    public void Logout(Angajat angajat) throws Exception {
+        Request req = new Request.Builder()
+                .type(RequestType.LOGOUT)
+                .data(angajat)
+                .build();
+        sendRequest(req);
+        Response response =readResponse();
     }
 
     private class ReaderThread implements Runnable{

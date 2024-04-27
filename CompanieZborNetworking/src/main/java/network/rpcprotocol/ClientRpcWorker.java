@@ -77,15 +77,6 @@ public class ClientRpcWorker implements Runnable, Observer {
                 return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).data(null).build();
             }
         }
-        if (request.type()== RequestType.GET_DESTINATIONS){
-            System.out.println("GetDestinations Request ...");
-            try {
-                List<String> destinatii=server.addDestinations();
-                return new Response.Builder().type(ResponseType.GET_DESTINATIONS).data(destinatii).build();
-            } catch (Exception e) {
-                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
-            }
-        }
         if (request.type()== RequestType.GET_ZBORURI){
             System.out.println("GetZboruri Request ...");
             try {
@@ -130,6 +121,16 @@ public class ClientRpcWorker implements Runnable, Observer {
             Bilet bilet=(Bilet)request.data();
             try {
                 server.addBilet(bilet);
+                return okResponse;
+            } catch (Exception e) {
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.LOGOUT){
+            System.out.println("LOGOUT Request ...");
+            Angajat angajat=(Angajat) request.data();
+            try {
+                server.Logout(angajat);
                 return okResponse;
             } catch (Exception e) {
                 return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
