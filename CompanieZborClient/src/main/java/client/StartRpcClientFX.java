@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Properties;
+import network.protobuffprotocol.*;
 
 
 public class StartRpcClientFX extends Application {
@@ -40,11 +41,11 @@ public class StartRpcClientFX extends Application {
             System.err.println("Wrong port number " + ex.getMessage());
             System.out.println("Using default port: " + defaultChatPort);
         }
-        System.out.println("Using server IP " + serverIP);
-        System.out.println("Using server port " + serverPort);
+        System.out.println("Using server IP " + "127.0.0.1");
+        System.out.println("Using server port " + "55555");
 
-        IService server = new ServicesRpcProxy(serverIP, serverPort);
-
+        //IService server = new ServicesRpcProxy(serverIP, serverPort);
+        IService server = new ServicesRpcProxyProto("127.0.0.1", 55555);
 
 
         FXMLLoader loader = new FXMLLoader(

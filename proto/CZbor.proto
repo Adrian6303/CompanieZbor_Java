@@ -1,0 +1,70 @@
+syntax="proto3";
+
+//option java_package = "network.protobuffprotocol";
+//option java_outer_classname = "CZborProtocol";
+
+//option java_multiple_files = true;
+
+message Angajat {
+  string user = 1;
+  string password = 2;
+}
+message Zbor {
+  string destinatia = 1;
+  string dataPlecarii = 2;
+  string aeroport = 3;
+  int32 nrLocuri = 4;
+  //TODO int32 id = 5;
+}
+message Turist {
+  string nume = 1;
+}
+message Bilet {
+  Angajat angajat = 1;
+  Zbor zbor = 2;
+  Turist client = 3;
+  repeated Turist listaTuristi = 4;
+  string adresaClient = 5;
+  int32 nrLocuri = 6;
+}
+
+message Request {
+  enum RequestType {
+    LOGIN = 0;
+    GET_ZBORURI = 1;
+    FILTER_ZBORURI = 2;
+    BUY_BILET = 3;
+    FIND_ADD_TURIST = 4;
+    UPDATE_ZBOR = 5;
+    LOGOUT = 6;
+  }
+  RequestType type = 1;
+  oneof data{
+    Zbor zbor = 2;
+    string name = 3;
+    Bilet bilet = 4;
+    Angajat angajat = 5;
+    Turist turist = 6;
+  }
+}
+
+message Response {
+  enum ResponseType{
+    OK = 0;
+    ERROR = 1;
+    GET_ZBORURI = 2;
+    FILTER_ZBORURI = 3;
+    FIND_ADD_TURIST = 4;
+    UPDATE_ZBOR = 5;
+    BUY_BILET = 6;
+    LOGOUT = 7;
+  }
+  ResponseType type = 1;
+  string error = 2;
+  Angajat angajat = 3;
+  repeated Zbor zboruri = 4;
+  string nume = 5;
+  Turist turist = 6;
+  Zbor zbor = 7;
+
+}
