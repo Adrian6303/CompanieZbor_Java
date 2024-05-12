@@ -1,5 +1,5 @@
 syntax="proto3";
-
+//package proto;
 //option java_package = "network.protobuffprotocol";
 //option java_outer_classname = "CZborProtocol";
 
@@ -14,7 +14,7 @@ message Zbor {
   string dataPlecarii = 2;
   string aeroport = 3;
   int32 nrLocuri = 4;
-  //TODO int32 id = 5;
+  int32 id = 5;
 }
 message Turist {
   string nume = 1;

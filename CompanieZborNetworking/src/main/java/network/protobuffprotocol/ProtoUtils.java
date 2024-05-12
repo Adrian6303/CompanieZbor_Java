@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,7 @@ public class ProtoUtils {
     }
     public static CZbor.Request createAddBiletRequest(Bilet bilet) {
         CZbor.Angajat angajat1 = CZbor.Angajat.newBuilder().setUser(bilet.getAngajat().getUser()).setPassword(bilet.getAngajat().getPassword()).build();
-        CZbor.Zbor zbor1 = CZbor.Zbor.newBuilder().setDestinatia(bilet.getZbor().getDestinatia()).setDataPlecarii(bilet.getZbor().getDataPlecarii().toString()).setNrLocuri(bilet.getZbor().getNrLocuri()).build();
+        CZbor.Zbor zbor1 = CZbor.Zbor.newBuilder().setId(bilet.getZbor().getId()).setDestinatia(bilet.getZbor().getDestinatia()).setDataPlecarii(bilet.getZbor().getDataPlecarii().toString()).setNrLocuri(bilet.getZbor().getNrLocuri()).build();
         CZbor.Turist client1 = CZbor.Turist.newBuilder().setNume(bilet.getClient().getNume()).build();
         List<Turist> turists = bilet.getListaTuristi();
         List<CZbor.Turist> turistP = null;
@@ -52,7 +53,8 @@ public class ProtoUtils {
     }
 
     public static CZbor.Request createUpdateZborRequest(Zbor zbor) {
-        CZbor.Zbor zbor1 = CZbor.Zbor.newBuilder().setDestinatia(zbor.getDestinatia()).setDataPlecarii(zbor.getDataPlecarii().toString()).setNrLocuri(zbor.getNrLocuri()).build();
+        CZbor.Zbor zbor1 = CZbor.Zbor.newBuilder().setId(zbor.getId()).setDestinatia(zbor.getDestinatia()).setDataPlecarii(zbor.getDataPlecarii().toString()).setNrLocuri(zbor.getNrLocuri()).build();
+
         CZbor.Request request = CZbor.Request.newBuilder().setType(CZbor.Request.RequestType.UPDATE_ZBOR).setZbor(zbor1).build();
         return request;
     }
@@ -74,7 +76,7 @@ public class ProtoUtils {
     public static CZbor.Response createGetZboruriResponse(List<Zbor> zboruri){
         CZbor.Response.Builder responseBuilder = CZbor.Response.newBuilder().setType(CZbor.Response.ResponseType.GET_ZBORURI);
         for(var zbor : zboruri){
-            CZbor.Zbor zborProto = CZbor.Zbor.newBuilder().setDestinatia(zbor.getDestinatia()).setDataPlecarii(zbor.getDataPlecarii().toString()).setNrLocuri(zbor.getNrLocuri()).build();
+            CZbor.Zbor zborProto = CZbor.Zbor.newBuilder().setId(zbor.getId()).setDestinatia(zbor.getDestinatia()).setDataPlecarii(zbor.getDataPlecarii().toString()).setNrLocuri(zbor.getNrLocuri()).build();
             responseBuilder.addZboruri(zborProto);
         }
         return responseBuilder.build();
@@ -84,7 +86,7 @@ public class ProtoUtils {
     public static CZbor.Response createFilterZboruriResponse(List<Zbor> zboruri){
         CZbor.Response.Builder responseBuilder = CZbor.Response.newBuilder().setType(CZbor.Response.ResponseType.FILTER_ZBORURI);
         for(var zbor : zboruri){
-            CZbor.Zbor zborProto = CZbor.Zbor.newBuilder().setDestinatia(zbor.getDestinatia()).setDataPlecarii(zbor.getDataPlecarii().toString()).setNrLocuri(zbor.getNrLocuri()).build();
+            CZbor.Zbor zborProto = CZbor.Zbor.newBuilder().setId(zbor.getId()).setDestinatia(zbor.getDestinatia()).setDataPlecarii(zbor.getDataPlecarii().toString()).setNrLocuri(zbor.getNrLocuri()).build();
             responseBuilder.addZboruri(zborProto);
         }
         return responseBuilder.build();
@@ -118,39 +120,73 @@ public class ProtoUtils {
     }
 
     public static List<Zbor> getZboruri(CZbor.Response response){
-        var zboruri = response.getZboruriList();
-        return zboruri.stream().map(zbor -> {
+//        var zboruri = response.getZboruriList();
+//        return zboruri.stream().map(zbor -> {
+//            try {
+////                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+////                java.util.Date utilDate = format.parse(zbor.getDataPlecarii());
+////                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+//                String dateString = zbor.getDataPlecarii().toString();
+//
+//                // Define the date format of the input string
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy HH:mm:ss");
+//
+//                    // Parse the string into a java.util.Date object
+//                    java.util.Date utilDate = dateFormat.parse(dateString);
+//
+//                    // Convert java.util.Date to java.sql.Date
+//                    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+//
+//
+//                return new Zbor(zbor.getDestinatia(), sqlDate, zbor.getAeroport(), zbor.getNrLocuri());
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                return null;
+//            }
+//        }).collect(Collectors.toList());
+        List<Zbor> zbors =new ArrayList<>();
+        for(var zbor : response.getZboruriList()){
             try {
-//                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//                java.util.Date utilDate = format.parse(zbor.getDataPlecarii());
-//                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 String dateString = zbor.getDataPlecarii().toString();
 
                 // Define the date format of the input string
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy HH:mm:ss");
 
                     // Parse the string into a java.util.Date object
-                    java.util.Date utilDate = dateFormat.parse(dateString);
+                java.util.Date utilDate = dateFormat.parse(dateString);
 
                     // Convert java.util.Date to java.sql.Date
-                    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-
-
-                return new Zbor(zbor.getDestinatia(), sqlDate, zbor.getAeroport(), zbor.getNrLocuri());
-            } catch (Exception e) {
+                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                Zbor zbor1 = new Zbor(zbor.getDestinatia(), sqlDate, zbor.getAeroport(), zbor.getNrLocuri());
+                zbor1.setId(zbor.getId());
+                zbors.add(zbor1);
+            } catch (ParseException e) {
                 e.printStackTrace();
-                return null;
             }
-        }).collect(Collectors.toList());
+        }
+        return zbors;
     }
     public static Zbor getZbor(CZbor.Request request){
+//        var zbor = request.getZbor();
+//        try {
+//            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//            java.util.Date utilDate = format.parse(zbor.getDataPlecarii());
+//            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+//            return new Zbor(zbor.getDestinatia(), sqlDate, zbor.getAeroport(), zbor.getNrLocuri());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
         var zbor = request.getZbor();
         try {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             java.util.Date utilDate = format.parse(zbor.getDataPlecarii());
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-            return new Zbor(zbor.getDestinatia(), sqlDate, zbor.getAeroport(), zbor.getNrLocuri());
-        } catch (Exception e) {
+            Zbor zbor1 = new Zbor(zbor.getDestinatia(), sqlDate, zbor.getAeroport(), zbor.getNrLocuri());
+            zbor1.setId(zbor.getId());
+            return zbor1;
+        } catch (ParseException e) {
             e.printStackTrace();
             return null;
         }
